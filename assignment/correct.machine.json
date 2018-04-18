@@ -1,0 +1,22 @@
+[
+    {
+        "Label": "SB-Uranus-Linode",
+        "SudoPassword": "abc123_",
+        "Mode": "SSHKEY"
+    },
+    {
+        "Label": "SB-Neptune-Linode",
+        "SudoPassword": "abc123_",
+        "Mode": "SSHKEY"
+    },
+    {
+        "Label": "SB-Asian-Vultr",
+        "SudoPassword": "turingmachine",
+        "Mode": "SSHKEY"
+    },
+    {
+        "Label": "SB-Europe-Vultr",
+        "SudoPassword": "turingmachine",
+        "Mode": "SSHKEY"
+    }
+] 

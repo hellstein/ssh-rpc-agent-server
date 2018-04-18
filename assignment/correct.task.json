@@ -1,0 +1,36 @@
+[
+    {
+        "Topic": "network flow on wan",
+        "Tasks": [
+            "sudo iftop -nNP"
+        ]
+    },
+    {
+        "Topic": "docker version",
+        "Tasks": [
+            "docker version",
+            "docker ps -a"
+        ]
+    },
+    {
+        "Topic": "iptables policy of table filter and nat",
+        "Tasks": [
+            "sudo iptables -L -nv",
+            "sudo iptables -L -nv -t nat"
+        ]
+    },
+    {
+        "Topic": "dns server status",
+        "Tasks": [
+            "cd dnsserver-x86",
+            "sudo ./dnsserver-control.sh status"
+        ]
+    },
+    {
+        "Topic": "sskcp server status",
+        "Tasks": [
+            "cd Bay-NET-Server",
+            "./ss-kcp-server list"
+        ]
+    }
+] 

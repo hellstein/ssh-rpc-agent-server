@@ -1,0 +1,17 @@
+[
+    {
+        "Label": "Jupiter",
+        "SudoPassword": "pass",
+        "Mode": "SSHKEY"
+    },
+    {
+        "Label": "Earth",
+        "SudoPassword": "pass",
+        "Mode": "SSHKEY"
+    },
+    {
+        "Label": "Europe",
+        "SudoPassword": "pass",
+        "Mode": "SSHKEY"
+    }
+] 
