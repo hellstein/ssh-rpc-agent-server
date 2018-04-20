@@ -2,7 +2,7 @@ package main
 
 import (
     "testing"
-    "github.com/dorrywhale/customer-support/assignment"
+    "github.com/dorrywhale/ssh-rpc-agent/assignment"
 
 )
 

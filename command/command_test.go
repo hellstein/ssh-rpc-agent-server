@@ -2,7 +2,7 @@ package command
 
 
 import (
-    "github.com/dorrywhale/customer-support/assignment"
+    "github.com/dorrywhale/ssh-rpc-agent/assignment"
     "testing"
     "os/exec"
     "reflect"
