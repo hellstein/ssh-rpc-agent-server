@@ -2,8 +2,8 @@ package main
 
 
 import (
-    "github.com/dorrywhale/ssh-rpc-agent/command"
-    "github.com/dorrywhale/ssh-rpc-agent/assignment"
+    "github.com/FuQiFeiPian/ssh-rpc-agent/command"
+    "github.com/FuQiFeiPian/ssh-rpc-agent/assignment"
     "fmt"
 )
 

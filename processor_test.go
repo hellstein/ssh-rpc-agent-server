@@ -3,7 +3,7 @@ package main
 import (
     "testing"
     "reflect"
-    "github.com/dorrywhale/ssh-rpc-agent/assignment"
+    "github.com/FuQiFeiPian/ssh-rpc-agent/assignment"
 )
 
 
