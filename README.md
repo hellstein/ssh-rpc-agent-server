@@ -19,7 +19,7 @@ $ unzip ssh-rpc-agent-m.n.p.zip
 
 * Lable
 
-  Host name, it shoulg be the same with Host in `~/.ssh/config` (used in SSHKEY mode)
+  Host name, it should be the same with Host in `~/.ssh/config` (used in SSHKEY mode)
 
 * Domain 
 
@@ -31,7 +31,7 @@ $ unzip ssh-rpc-agent-m.n.p.zip
 
 * Username 
 
-  usernmae used to access to a machine via SSH (used in SSHUSER mode)
+  username used to access to a machine via SSH (used in SSHUSER mode)
 
 * SudoPassword 
 
@@ -111,7 +111,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ### Authors
 
-* **FuQiFeiPian** - *Initial work* - [FuQiFeiPian](https://github.com/FuQiFeiPian)
+* **FuQiFeiPian** - *Initial work* - [dorrywhale](https://github.com/dorrywhale)
 
 See also the list of [contributors](https://github.com/FuQiFeiPian/ssh-rpc-agent/graphs/contributors) who participated in this project.
 
