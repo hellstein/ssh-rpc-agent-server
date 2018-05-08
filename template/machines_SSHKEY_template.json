@@ -1,0 +1,12 @@
+[
+   {
+        "Label": "Host name_1",
+        "SudoPassword": "sudo password of remote machine_1",
+        "Mode": "SSHKEY"
+    },
+    {
+        "Label": "Host name_2",
+        "SudoPassword": "sudo password of remote machine_2",
+        "Mode": "SSHKEY"
+    }
+] 
