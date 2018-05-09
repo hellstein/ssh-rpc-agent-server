@@ -56,7 +56,7 @@ func TestExecutorExecute(t *testing.T) {
         {
             name: "with correct configuration",
             c: &MockCommand{
-                Presentation: []string{"ssh", "-p", "22", "-t", "phoenix@127.0.0.1", "/bin/bash", "-c", "ls"},
+                Presentation: []string{"ssh", "-p", "22", "-t", "root@127.0.0.1", "/bin/bash", "-c", "ls"},
                 Title: "list files",
             },
             result:nil,
@@ -64,7 +64,7 @@ func TestExecutorExecute(t *testing.T) {
         {
             name: "without task",
             c: &MockCommand{
-                Presentation: []string{"ssh", "-p", "22", "-t", "phoenix@127.0.0.1", "/bin/bash", "-c"},
+                Presentation: []string{"ssh", "-p", "22", "-t", "root@127.0.0.1", "/bin/bash", "-c"},
                 Title: "list files",
             },
             result: &exec.ExitError{},
