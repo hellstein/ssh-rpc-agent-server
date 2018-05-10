@@ -18,29 +18,28 @@
 * Task sample
 
 ```
-	
-	[
-		{
-			"Topic": "show files in HOME",
-			"Tasks": [
-				"ls $HOME"
-			]
-		}
-	] 
+  [
+    {
+    	"Topic": "show files in HOME",
+    	"Tasks": [
+    		"ls $HOME"
+      	]
+    }
+  ] 
 
 ```
 
 * Machine sample
 ```
-	[
-		{
-			"Domain": "127.0.0.1",
-			"Port": "22",
-			"Username": "<username>",
-			"SudoPassword": "<sudo Password>",
-			"Mode": "USERPASS"
-		}
-	] 
+  [
+    {
+    	"Domain": "127.0.0.1",
+    	"Port": "22",
+    	"Username": "<username>",
+    	"SudoPassword": "<sudo password>",
+    	"Mode": "USERPASS"
+    }
+  ] 
 ```
 
 ### Execute application locally
@@ -50,25 +49,25 @@
 * For amd64
 
 ```
-	$ ./ssh-rpc-agent-amd64 --tf <path>/tasks.json --mf <path>/machines.json
+  $ ./ssh-rpc-agent-amd64 --tf <path>/tasks.json --mf <path>/machines.json
 ```
 
 * For arm
 
 ```
-	$ ./ssh-rpc-agent-arm --tf <path>/tasks.json --mf <path>/machines.json
+  $ ./ssh-rpc-agent-arm --tf <path>/tasks.json --mf <path>/machines.json
 ```
 
 * For 386
 
 ```
-	$ ./ssh-rpc-agent-386 --tf <path>/tasks.json --mf <path>/machines.json
+  $ ./ssh-rpc-agent-386 --tf <path>/tasks.json --mf <path>/machines.json
 ```
 
 #### Usage
 
 ```
-	$ ./ssh-rpc-agent-amd64 -h
+  $ ./ssh-rpc-agent-amd64 -h
 	NAME:
 	   ssh-rpc-agent-amd64 - RPC support tool
 
@@ -93,13 +92,13 @@
 * Mode SSHKEY, log in with an SSH private key 
 
 ```
-	[
-		{
-			"Label": "host name, it should be the same with Host in ~/.ssh/config",
-			"SudoPassword": "sudo Password of remote computer",
-			"Mode": "SSHKEY"
-		}
-	] 
+  [
+    {
+    	"Label": "host name, it should be the same with Host in ~/.ssh/config",
+    	"SudoPassword": "sudo Password of remote computer",
+    	"Mode": "SSHKEY"
+    }
+  ] 
 ```
 
 * Mode SSHUSER, log in with password
@@ -120,14 +119,14 @@
 
 #### Explanation of task configuration
 ```
-	[
-		{
-	 	   	"Topic":  "description of tasks",
-			"Tasks":  [
-				"shell command"
-			]
-	 	   }
-	]
+  [
+    {
+    	"Topic":  "description of tasks",
+    	"Tasks":  [
+    		"shell command"
+    	]
+    }
+  ]
 ```
 
 
@@ -140,7 +139,7 @@ These instructions will get you a copy of the project up and running on your loc
 * You have to install `go` firstly, refer to [golang](https://golang.org/doc/install). Test whether it has been installed by
 
 ```
-	go version
+  go version
 ```
 
 ### Installing packages
@@ -148,13 +147,13 @@ These instructions will get you a copy of the project up and running on your loc
 In your `GOPATH` directory, install `ssh-rpc-agent`
 
 ```
-	go get -v github.com/FuQiFeiPian/ssh-rpc-agent
+  go get -v github.com/FuQiFeiPian/ssh-rpc-agent
 ```
 
 ### Running the tests
 
 ```
-	go test -v -cover ./...
+  go test -v -cover ./...
 ```
 
 ### Build
@@ -162,13 +161,13 @@ In your `GOPATH` directory, install `ssh-rpc-agent`
 * Development build
 
 ```
-	go build
+  go build
 ```
 
 * Release build
 
 ```
-	./build_release.sh <version>
+  ./build_release.sh <version>
 ```
 
 
