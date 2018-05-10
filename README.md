@@ -68,23 +68,23 @@
 
 ```
 
-	NAME:
-	   ssh-rpc-agent-amd64 - RPC support tool
+  NAME:
+     ssh-rpc-agent-amd64 - RPC support tool
 
-	USAGE:
-	   ssh-rpc-agent-amd64 [global options] command [command options] [arguments...]
+  USAGE:
+     ssh-rpc-agent-amd64 [global options] command [command options] [arguments...]
 
-	VERSION:
-	   0.0.1
+  VERSION:
+     0.0.1
 
-	COMMANDS:
-	     help, h  Shows a list of commands or help for one command
+  COMMANDS:
+       help, h  Shows a list of commands or help for one command
 
-	GLOBAL OPTIONS:
-	   --machinefile value, --mf value  Specify the machine configuration file
-	   --taskfile value, --tf value     Specify the task configuration file
-	   --help, -h                       show help
-	   --version, -v                    print the version
+  GLOBAL OPTIONS:
+     --machinefile value, --mf value  Specify the machine configuration file
+     --taskfile value, --tf value     Specify the task configuration file
+     --help, -h                       show help
+     --version, -v                    print the version
 ```
 
 ### Explanation of machine configuration
@@ -92,27 +92,27 @@
 * Mode `SSHKEY`: log in with an SSH private key 
 
 ```
-[
-  {
+  [
+    {
 	"Label": "host name, it should be the same with Host in ~/.ssh/config",
 	"SudoPassword": "sudo Password of remote computer",
 	"Mode": "SSHKEY"
-  }
-] 
+    }
+  ] 
 ```
 
 * Mode `SSHUSER`: log in with password
 
 ```
-[
-  {
+  [
+    {
   	"Domain": "domain or IP of remote computer",
 	"Port": "ssh port",
 	"Username": "usernmae of remote computer",
 	"SudoPassword": "sudo Password of remote computer",
 	"Mode": "USERPASS"
-  }
-] 
+    }
+  ] 
 ```
 
 		
