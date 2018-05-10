@@ -5,8 +5,7 @@
         "Username": "usernmae of remote machine_1",
         "SudoPassword": "sudo Password of remote machine_1",
         "Mode": "USERPASS"
-    },
-    
+    },   
     {
         "Domain": "Domain or IP of remote machine_2",
         "Port": "ssh port",

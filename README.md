@@ -1,10 +1,10 @@
 # ssh-rpc-agent 
 
-An agent used to do any tasks on a remote machine locally, for example, update linux, deploy ssh key, run any shell scripts. 
+ Request a service from a program located in another computer on a network without knowing details for the remote interaction. For instance, update system of a remote computer or deploy ssh key on another computer on a shared network. 
 
 # Deployment
 
-### Donwload 
+### Download 
 
 * Download zip from [here](https://github.com/FuQiFeiPian/ssh-rpc-agent/releases)
 * Unzip
@@ -13,55 +13,121 @@ An agent used to do any tasks on a remote machine locally, for example, update l
 $ unzip ssh-rpc-agent-m.n.p.zip
 ```
 
-### Create task.json and machines.json, refer to templates in `template/`
+### Create task.json and machines.json 
+
+* File sample
+
+```
+$ vi tasks.json
+[
+    {
+        "Topic": "show files in HOME",
+        "Tasks": [
+            "ls $HOME"
+        ]
+    }
+] 
+
+$ vi machines.json
+[
+    {
+        "Domain": "127.0.0.1",
+        "Port": "22",
+        "Username": "<username>",
+        "SudoPassword": "<sudo Password>",
+        "Mode": "USERPASS"
+    }
+] 
+
+```
+
+### Execute application locally
+
+* Choose local architecture
+
+* For amd64
+
+```
+$ ./ssh-rpc-agent-amd64 --tf <path>/tasks.json --mf <path>/machines.json
+```
+
+* For arm
+
+```
+$ ./ssh-rpc-agent-arm --tf <path>/tasks.json --mf <path>/machines.json
+```
+
+* For 386
+
+```
+$ ./ssh-rpc-agent-386 --tf <path>/tasks.json --mf <path>/machines.json
+```
+
+#### Usage
+
+```
+$ ./ssh-rpc-agent-amd64 -h
+NAME:
+   ssh-rpc-agent-amd64 - RPC support tool
+
+USAGE:
+   ssh-rpc-agent-amd64 [global options] command [command options] [arguments...]
+
+VERSION:
+   0.0.1
+
+COMMANDS:
+     help, h  Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --machinefile value, --mf value  Specify the machine configuration file
+   --taskfile value, --tf value     Specify the task configuration file
+   --help, -h                       show help
+   --version, -v                    print the version
+```
 
 #### Explanation of machine configuration
 
-* Lable
+* Mode SSHKEY, log in with an SSH private key 
 
-  Host name, it should be the same with Host in `~/.ssh/config` (used in SSHKEY mode)
+```
+[
+   {
+        "Label": "host name, it should be the same with Host in ~/.ssh/config",
+        "SudoPassword": "sudo Password of remote computer",
+        "Mode": "SSHKEY"
+    }
+] 
+```
 
-* Domain 
+* Mode SSHUSER, log in with password
 
-  Domain used to access to a machine via SSH (used in SSHUSER mode)
+```
+[
+    {
+        "Domain": "domain or IP of remote computer",
+        "Port": "ssh port",
+        "Username": "usernmae of remote computer",
+        "SudoPassword": "sudo Password of remote computer",
+        "Mode": "USERPASS"
+    }
+]  
+```
 
-* Port
-
-  SSH port (used in SSHUSER mode)
-
-* Username 
-
-  username used to access to a machine via SSH (used in SSHUSER mode)
-
-* SudoPassword 
-
-  the password you use to login (used in both mode)
-
-* Mode 
-
-	Choose between 2 modes listed
-   * SSHKEY - use ssh key to login to your machine
-   * SSHUSER - use username and password to login to your machine
 		
 
-#### Explanation of task configuration, such as tasks.json
-
-* Topic 
-
-  give a description of what the task is all about
-
-* Tasks 
-
-  shell commands you'd like to run on a machine
-	
-
-### Run tasks locally
-
-* Choose local architecture,for x86
-
+#### Explanation of task configuration
 ```
-./ssh-rpc-agent-x86 --tf <path>/<tasks>.json --mf <path>/<machines>.json
+[
+    {
+        "Topic": "description of tasks",
+        "Tasks": [
+            "shell command"
+        ]
+    }
+] 
 ```
+
 
 # Getting Started
 
