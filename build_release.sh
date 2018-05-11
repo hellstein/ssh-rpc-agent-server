@@ -1,9 +1,8 @@
 #!/bin/bash
 
 code=github.com/FuQiFeiPian/ssh-rpc-agent
-path=".build"
 product="ssh-rpc-agent"
-
+path=".build"
 
 function build() {
     # X86
@@ -21,8 +20,9 @@ function build() {
 function compress() {
     cp README.md ${path}/
     cp -r template ${path}/
-    zip -r ${product}-${1}.zip ${path}
-    #rm -rf ${path}
+    mv ${path} ${product}-${1}
+    zip -r ${product}-${1}.zip ${product}-${1}
+    rm -rf ${product}-${1}
 }
 
 

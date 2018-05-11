@@ -10,35 +10,36 @@
 * Unzip
 
 ```
-$ unzip ssh-rpc-agent-m.n.p.zip
+  unzip ssh-rpc-agent-m.n.p.zip
 ```
 
 ### Create task.json and machines.json 
 
-* File sample
+* Task sample
 
 ```
-$ vi tasks.json
-[
+  [
     {
-        "Topic": "show files in HOME",
-        "Tasks": [
-            "ls $HOME"
-        ]
+    	"Topic": "show files in HOME",
+    	"Tasks": [
+    		"ls $HOME"
+      	]
     }
-] 
+  ] 
 
-$ vi machines.json
-[
+```
+
+* Machine sample
+```
+  [
     {
-        "Domain": "127.0.0.1",
-        "Port": "22",
-        "Username": "<username>",
-        "SudoPassword": "<sudo Password>",
-        "Mode": "USERPASS"
+    	"Domain": "127.0.0.1",
+    	"Port": "22",
+    	"Username": "<username>",
+    	"SudoPassword": "<sudo password>",
+    	"Mode": "USERPASS"
     }
-] 
-
+  ] 
 ```
 
 ### Execute application locally
@@ -48,84 +49,84 @@ $ vi machines.json
 * For amd64
 
 ```
-$ ./ssh-rpc-agent-amd64 --tf <path>/tasks.json --mf <path>/machines.json
+  ./ssh-rpc-agent-amd64 --tf <path>/tasks.json --mf <path>/machines.json
 ```
 
 * For arm
 
 ```
-$ ./ssh-rpc-agent-arm --tf <path>/tasks.json --mf <path>/machines.json
+  ./ssh-rpc-agent-arm --tf <path>/tasks.json --mf <path>/machines.json
 ```
 
 * For 386
 
 ```
-$ ./ssh-rpc-agent-386 --tf <path>/tasks.json --mf <path>/machines.json
+  ./ssh-rpc-agent-386 --tf <path>/tasks.json --mf <path>/machines.json
 ```
 
-#### Usage
+# Usage
 
 ```
-$ ./ssh-rpc-agent-amd64 -h
-NAME:
-   ssh-rpc-agent-amd64 - RPC support tool
 
-USAGE:
-   ssh-rpc-agent-amd64 [global options] command [command options] [arguments...]
+  NAME:
+     ssh-rpc-agent-amd64 - RPC support tool
 
-VERSION:
-   0.0.1
+  USAGE:
+     ssh-rpc-agent-amd64 [global options] command [command options] [arguments...]
 
-COMMANDS:
-     help, h  Shows a list of commands or help for one command
+  VERSION:
+     0.0.1
 
-GLOBAL OPTIONS:
-   --machinefile value, --mf value  Specify the machine configuration file
-   --taskfile value, --tf value     Specify the task configuration file
-   --help, -h                       show help
-   --version, -v                    print the version
+  COMMANDS:
+       help, h  Shows a list of commands or help for one command
+
+  GLOBAL OPTIONS:
+     --machinefile value, --mf value  Specify the machine configuration file
+     --taskfile value, --tf value     Specify the task configuration file
+     --help, -h                       show help
+     --version, -v                    print the version
 ```
 
-#### Explanation of machine configuration
+### Explanation of machine configuration
 
-* Mode SSHKEY, log in with an SSH private key 
-
-```
-[
-   {
-        "Label": "host name, it should be the same with Host in ~/.ssh/config",
-        "SudoPassword": "sudo Password of remote computer",
-        "Mode": "SSHKEY"
-    }
-] 
-```
-
-* Mode SSHUSER, log in with password
+* Mode `SSHKEY`: log in with an SSH private key 
 
 ```
-[
+  [
     {
-        "Domain": "domain or IP of remote computer",
-        "Port": "ssh port",
-        "Username": "usernmae of remote computer",
-        "SudoPassword": "sudo Password of remote computer",
-        "Mode": "USERPASS"
+	"Label": "host name, it should be the same with Host in ~/.ssh/config",
+	"SudoPassword": "sudo Password of remote computer",
+	"Mode": "SSHKEY"
     }
-]  
+  ] 
+```
+
+* Mode `SSHUSER`: log in with password
+
+```
+  [
+    {
+  	"Domain": "domain or IP of remote computer",
+	"Port": "ssh port",
+	"Username": "usernmae of remote computer",
+	"SudoPassword": "sudo Password of remote computer",
+	"Mode": "USERPASS"
+    }
+  ] 
 ```
 
 		
 
-#### Explanation of task configuration
+### Explanation of task configuration
 ```
-[
+  [
     {
-        "Topic": "description of tasks",
-        "Tasks": [
-            "shell command"
-        ]
+    	"Topic":  "description of tasks",
+    	"Tasks":  [
+    		"shell command"
+    	]
     }
-] 
+  ]
 ```
 
 
@@ -135,33 +136,40 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+* You have to install `go` firstly, refer to [golang](https://golang.org/doc/install). Test whether it has been installed by
 
 ```
-Give examples
+  go version
 ```
 
-### Installing
+### Installing packages
 
-How to install package
+In your `GOPATH` directory, install `ssh-rpc-agent`
 
+```
+  go get -v github.com/FuQiFeiPian/ssh-rpc-agent
+```
 
 ### Running the tests
 
-Explain how to run the automated tests for this system
-
 ```
-Give an example
+  go test -v -cover ./...
 ```
-
 
 ### Build
 
-How to build
+* Development build
 
-### Built With
+```
+  go build
+```
 
-Tools you used for building this project
+* Release build
+
+```
+  ./build_release.sh <version>
+```
+
 
 # Logistics
 
