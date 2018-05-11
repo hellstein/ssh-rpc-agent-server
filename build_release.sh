@@ -19,7 +19,7 @@ function build() {
 
 function compress() {
     cp README.md ${path}/
-    cp -r template ${path}/
+    cp -r example ${path}/
     mv ${path} ${product}-${1}
     zip -r ${product}-${1}.zip ${product}-${1}
     rm -rf ${product}-${1}
