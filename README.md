@@ -1,6 +1,37 @@
 # ssh-rpc-agent 
 
- Request a service from a program located in another computer on a network without knowing details for the remote interaction. For instance, update system of a remote computer or deploy ssh key on another computer on a shared network. 
+ Request a service from a program located in another computer on a network without knowing details for the remote interaction. 
+
+# Who should use
+
+IT administrator who is entitled to manage multiple remote severs
+
+
+# When to use
+
+* Update system of multiple remote servers
+* Deploy ssh key to multiple remote servers
+* Deploy services on multiple remote servers
+
+# Quick start
+
+### Download 
+
+* Download zip from [here](https://github.com/FuQiFeiPian/ssh-rpc-agent/releases)
+* Unzip
+
+```
+  unzip ssh-rpc-agent-m.n.p.zip
+```
+
+### Execute example tasks
+
+* Change 'username' and 'sudo password' in `example/machines.json`
+* If the CPU arch of your computer is `x86-64`, execute by
+
+```
+  ./ssh-rpc-agent-amd64 --tf example/tasks.json --mf example/machines.json
+```
 
 # Deployment
 
@@ -49,19 +80,19 @@
 * For amd64
 
 ```
-  ./ssh-rpc-agent-amd64 --tf <path>/tasks.json --mf <path>/machines.json
+  ./ssh-rpc-agent-amd64 --tf <task file> --mf <machine file>
 ```
 
 * For arm
 
 ```
-  ./ssh-rpc-agent-arm --tf <path>/tasks.json --mf <path>/machines.json
+  ./ssh-rpc-agent-arm --tf <task file> --mf <machine file>
 ```
 
 * For 386
 
 ```
-  ./ssh-rpc-agent-386 --tf <path>/tasks.json --mf <path>/machines.json
+  ./ssh-rpc-agent-386 --tf <task file> --mf <machine file>
 ```
 
 # Usage

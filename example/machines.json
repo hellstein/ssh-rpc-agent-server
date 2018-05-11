@@ -1,0 +1,9 @@
+  [
+    {
+    	"Domain": "127.0.0.1",
+    	"Port": "22",
+    	"Username": "qa",
+    	"SudoPassword": "abc123_",
+    	"Mode": "USERPASS"
+    }
+  ] 

@@ -1,4 +1,4 @@
-machines.json
-tasks.json
+./machines.json
+./tasks.json
 *.zip
 ssh-rpc-agent*
