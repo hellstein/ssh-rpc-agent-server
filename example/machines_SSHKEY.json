@@ -1,0 +1,7 @@
+[
+   {
+        "Label": "host in ~/.ssh/config",
+        "SudoPassword": "remote machine sudo password",
+        "Mode": "SSHKEY"
+    }
+] 
