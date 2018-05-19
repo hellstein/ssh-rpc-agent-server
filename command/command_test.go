@@ -122,7 +122,7 @@ func TestGetPresentation(t *testing.T) {
             name: "SSHKEY mode",
             t: &MockTask{Task:"docker version && docker ps -a"},
             m: &MockMachine{Mode:"SSHKEY", Label:"mycomputer"},
-            result: []string{"ssh", "-o", "StrictHostKeyChecking=no", "-t", "mycomputer", "/bin/bash", "-c", "'docker version && docker ps -a'"},
+            result: []string{"ssh", "-o", "StrictHostKeyChecking=no", "-t", "mycomputer", "/bin/bash", "-l", "-c", "'docker version && docker ps -a'"},
         },
         {
             name: "USERPASS mode",
@@ -134,14 +134,14 @@ func TestGetPresentation(t *testing.T) {
                 Username:"me",
                 SudoPassword: "mypass",
             },
-            result: []string{"sshpass", "-p", "mypass", "ssh", "-o", "StrictHostKeyChecking=no", "-t", "-p", "1112", "me@mycomputer", "/bin/bash", "-c", "'docker version && docker ps -a'"},
+            result: []string{"sshpass", "-p", "mypass", "ssh", "-o", "StrictHostKeyChecking=no", "-t", "-p", "1112", "me@mycomputer", "/bin/bash", "-l", "-c", "'docker version && docker ps -a'"},
         },
 
         {
             name: "other mode",
             t: &MockTask{Task:"docker version && docker ps -a"},
             m: &MockMachine{Mode:"others", Label: "mycomputer"},
-            result: []string{"/bin/bash", "-c", "'docker version && docker ps -a'"},
+            result: []string{"/bin/bash", "-l", "-c", "'docker version && docker ps -a'"},
         },
     }
     teardownCommandTestCase := setupCommandTestCase(t)
@@ -180,7 +180,7 @@ func TestGetTask(t *testing.T) {
             name: "with sudo",
             t: &MockTask{Task:"docker version && sudo iptables -L -nv"},
             m: &MockMachine{SudoPassword: "pass"},
-            result: "'docker version && echo pass | sudo -S iptables -L -nv'",
+            result: "'docker version && sudo iptables -L -nv'",
         },
     }
     teardownCommandTestCase := setupCommandTestCase(t)

@@ -49,7 +49,7 @@ func (c *Command) GetPresentation() []string {
         re = append(re, "-p", c.Machine.GetPort())
         re = append(re, c.Machine.GetUsername() + "@" + c.Machine.GetDomain())
     }
-    re = append(re, "/bin/bash", "-c", c.GetTask())
+    re = append(re, "/bin/bash", "-l", "-c", c.GetTask())
     return re
 }
 
@@ -57,7 +57,7 @@ func (c *Command) GetPresentation() []string {
     Get task
 */
 func (c *Command) GetTask() string {
-    task := strings.Replace(c.Task.Serialize(), "sudo", "echo "+c.Machine.GetSudoPassword()+" | sudo -S", -1)
+    task := c.Task.Serialize()
     return "'"+task+"'"
 }
 
