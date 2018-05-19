@@ -6,9 +6,15 @@
       	]
     },
     {
-    	"Topic": "check ifconfig",
+    	"Topic": "iteractive with iftop",
     	"Tasks": [
-    		"ifconfig"
+    		"sudo iftop"
+      	]
+    },
+    {
+    	"Topic": "echo something",
+    	"Tasks": [
+    		"echo \"It is fun!\""
       	]
     }    
-  ] 
+] 
