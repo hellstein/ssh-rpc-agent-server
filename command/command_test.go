@@ -122,7 +122,7 @@ func TestGetPresentation(t *testing.T) {
             name: "SSHKEY mode",
             t: &MockTask{Task:"docker version && docker ps -a"},
             m: &MockMachine{Mode:"SSHKEY", Label:"mycomputer"},
-            result: []string{"ssh", "-t", "mycomputer", "/bin/bash", "-c", "'docker version && docker ps -a'"},
+            result: []string{"ssh", "-o", "StrictHostKeyChecking=no", "-t", "mycomputer", "/bin/bash", "-c", "'docker version && docker ps -a'"},
         },
         {
             name: "USERPASS mode",
@@ -134,7 +134,7 @@ func TestGetPresentation(t *testing.T) {
                 Username:"me",
                 SudoPassword: "mypass",
             },
-            result: []string{"sshpass", "-p", "mypass", "ssh", "-t", "-p", "1112", "me@mycomputer", "/bin/bash", "-c", "'docker version && docker ps -a'"},
+            result: []string{"sshpass", "-p", "mypass", "ssh", "-o", "StrictHostKeyChecking=no", "-t", "-p", "1112", "me@mycomputer", "/bin/bash", "-c", "'docker version && docker ps -a'"},
         },
 
         {

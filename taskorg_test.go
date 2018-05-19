@@ -55,7 +55,7 @@ func TestParseTask(t *testing.T) {
     }{
         {name: "no file", file: "", eLen:0},
         {name: "with file which doesn't exist ", file: "xxx", eLen:0},
-        {name: "with correct file", file: "tasks_test.json", eLen:3},
+        {name: "with correct file", file: "tasks_test.json", eLen:2},
     }
 
     to := &TaskOrg{}

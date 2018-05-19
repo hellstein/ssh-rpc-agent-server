@@ -41,11 +41,11 @@ func (c *Command) Execute(e I_Executor) error {
 func (c *Command) GetPresentation() []string {
     re := []string{}
     if c.Machine.GetMode() == "SSHKEY" {
-        re = append(re, "ssh", "-t")
+        re = append(re, "ssh", "-o", "StrictHostKeyChecking=no", "-t")
         re = append(re, c.Machine.GetLabel())
     }
     if c.Machine.GetMode() == "USERPASS" {
-        re = append(re, "sshpass", "-p", c.Machine.GetSudoPassword(), "ssh", "-t")
+        re = append(re, "sshpass", "-p", c.Machine.GetSudoPassword(), "ssh", "-o", "StrictHostKeyChecking=no", "-t")
         re = append(re, "-p", c.Machine.GetPort())
         re = append(re, c.Machine.GetUsername() + "@" + c.Machine.GetDomain())
     }
