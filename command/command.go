@@ -58,6 +58,10 @@ func (c *Command) GetPresentation() []string {
 */
 func (c *Command) GetTask() string {
     task := c.Task.Serialize()
+    if strings.Contains(task, "sudo") {
+        task = strings.Replace(task, "sudo", "MYPASS="+c.Machine.GetSudoPassword() + " SUDO_ASKPASS=`pwd`/echopass" +" sudo -A", -1)
+        task = "echo -e \"#! /bin/bash\necho \\$MYPASS\">echopass && chmod +x echopass && " + task + " && rm echopass"
+    }
     return "'"+task+"'"
 }
 
