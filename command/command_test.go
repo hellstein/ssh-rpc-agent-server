@@ -180,7 +180,7 @@ func TestGetTask(t *testing.T) {
             name: "with sudo",
             t: &MockTask{Task:"docker version && sudo iptables -L -nv"},
             m: &MockMachine{SudoPassword: "pass"},
-            result: "'echo -e \"#! /bin/bash\necho \\$MYPASS\">echopass && chmod +x echopass && docker version && MYPASS=pass SUDO_ASKPASS=`pwd`/echopass sudo -A iptables -L -nv && rm echopass'",
+            result: "'echo -e \"#! /bin/bash\necho \\$MYPASS\">echopass && chmod +x echopass && docker version && MYPASS=pass SUDO_ASKPASS=`echo $HOME`/echopass sudo -A iptables -L -nv && rm `echo $HOME`/echopass'",
         },
     }
     teardownCommandTestCase := setupCommandTestCase(t)

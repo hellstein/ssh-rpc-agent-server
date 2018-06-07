@@ -12,6 +12,13 @@
       	]
     },
     {
+    	"Topic": "show files in HOME",
+    	"Tasks": [
+            "cd /",
+    		"sudo ls"
+      	]
+    },
+    {
     	"Topic": "echo something",
     	"Tasks": [
     		"echo \"It is fun!\""
