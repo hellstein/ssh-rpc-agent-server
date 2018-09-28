@@ -3,7 +3,7 @@ package command
 
 import (
     "fmt"
-    "github.com/FuQiFeiPian/ssh-rpc-agent/assignment"
+    "github.com/hellstein/ssh-rpc-agent/assignment"
     "strings"
 )
 

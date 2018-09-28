@@ -1,6 +1,6 @@
 #!/bin/bash
 
-code=github.com/FuQiFeiPian/ssh-rpc-agent
+code=github.com/hellstein/ssh-rpc-agent
 product="ssh-rpc-agent"
 path=".build"
 

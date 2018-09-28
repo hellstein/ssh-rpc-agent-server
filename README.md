@@ -17,7 +17,7 @@ IT administrator who is entitled to manage multiple remote severs
 
 ### Download 
 
-* Download zip from [here](https://github.com/FuQiFeiPian/ssh-rpc-agent/releases)
+* Download zip from [here](https://github.com/hellstein/ssh-rpc-agent/releases)
 * Unzip
 
 ```
@@ -37,7 +37,7 @@ IT administrator who is entitled to manage multiple remote severs
 
 ### Download 
 
-* Download zip from [here](https://github.com/FuQiFeiPian/ssh-rpc-agent/releases)
+* Download zip from [here](https://github.com/hellstein/ssh-rpc-agent/releases)
 * Unzip
 
 ```
@@ -178,7 +178,7 @@ These instructions will get you a copy of the project up and running on your loc
 In your `GOPATH` directory, install `ssh-rpc-agent`
 
 ```
-  go get -v github.com/FuQiFeiPian/ssh-rpc-agent
+  go get -v github.com/hellstein/ssh-rpc-agent
 ```
 
 ### Running the tests
@@ -206,9 +206,9 @@ In your `GOPATH` directory, install `ssh-rpc-agent`
 
 ### Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/FuQiFeiPian/ssh-rpc-agent/blob/master/docs/CONTRIBUTING.md) for contributing.
+Please read [CONTRIBUTING.md](https://github.com/hellstein/ssh-rpc-agent/blob/master/docs/CONTRIBUTING.md) for contributing.
 
-For details on our [code of conduct](https://github.com/FuQiFeiPian/ssh-rpc-agent/blob/master/docs/CODE_OF_CONDUCT.md), and the process for submitting pull requests to us.
+For details on our [code of conduct](https://github.com/hellstein/ssh-rpc-agent/blob/master/docs/CODE_OF_CONDUCT.md), and the process for submitting pull requests to us.
 
 ### Versioning
 
@@ -216,17 +216,17 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ### Authors
 
-* **FuQiFeiPian** - *Initial work* - [dorrywhale](https://github.com/dorrywhale)
+* **hellstein** - *Initial work* - [dorrywhale](https://github.com/dorrywhale)
 
-See also the list of [contributors](https://github.com/FuQiFeiPian/ssh-rpc-agent/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/hellstein/ssh-rpc-agent/graphs/contributors) who participated in this project.
 
 ### Acknowledgments
 
-See [Acknowledgments](https://github.com/FuQiFeiPian/ssh-rpc-agent/blob/master/docs/ACKNOWLEDGMENTS.md)
+See [Acknowledgments](https://github.com/hellstein/ssh-rpc-agent/blob/master/docs/ACKNOWLEDGMENTS.md)
 
 
 ### License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/FuQiFeiPian/ssh-rpc-agent/blob/master/LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/hellstein/ssh-rpc-agent/blob/master/LICENSE.md) file for details
 
 

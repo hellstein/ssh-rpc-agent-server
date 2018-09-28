@@ -65,7 +65,7 @@ func TestExecutorExecute(t *testing.T) {
             name: "without task",
             c: &MockCommand{
                 Presentation: []string{"ssh", "-p", "22", "-o", "StrictHostKeyChecking=no", "-t", "root@127.0.0.1", "/bin/bash", "-c"},
-                Title: "list files",
+                Title: "no task",
             },
             result: &exec.ExitError{},
         },
@@ -73,7 +73,7 @@ func TestExecutorExecute(t *testing.T) {
             name: "without machine",
             c: &MockCommand{
                 Presentation: []string{"ssh", "-t", "/bin/bash", "-c"},
-                Title: "no task",
+                Title: "no machine",
             },
             result: &exec.ExitError{},
         },

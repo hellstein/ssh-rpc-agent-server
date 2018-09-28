@@ -2,7 +2,7 @@ package main
 
 import (
     "testing"
-    "github.com/FuQiFeiPian/ssh-rpc-agent/assignment"
+    "github.com/hellstein/ssh-rpc-agent/assignment"
 
 )
 

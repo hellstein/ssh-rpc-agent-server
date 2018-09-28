@@ -2,7 +2,7 @@ package command
 
 
 import (
-    "github.com/FuQiFeiPian/ssh-rpc-agent/assignment"
+    "github.com/hellstein/ssh-rpc-agent/assignment"
     "testing"
     "os/exec"
     "reflect"
