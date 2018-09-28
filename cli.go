@@ -64,7 +64,7 @@ func InitCli() {
     invoker := &Invoker{}
 
     app.Usage = "RPC support tool"
-    app.Version = "0.0.4"
+    app.Version = "0.0.5"
     app.Flags = InitFlags()
     app.Action = InitAppAction(argsHandler, invoker)
 
