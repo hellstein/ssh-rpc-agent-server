@@ -1,12 +1,12 @@
 package jobmgr
 
 import (
-    "fmt"
+//    "fmt"
     "log"
     "golang.org/x/crypto/ssh"
     "bytes"
     "strings"
-    "os"
+//    "os"
 )
 
 
@@ -69,15 +69,13 @@ func (job *Job) RPC(dest string, authConf *ssh.ClientConfig, result chan string)
 
         var b bytes.Buffer
         session.Stdout = &b
-        session.Stdin = os.Stdin
-        session.Stderr = os.Stderr
         content = append(content, tasks[index].GetTopic())
         cmd := job.GetTasks()[index]
-        fmt.Println(cmd)
         if err := session.Run(cmd); err != nil {
-            log.Fatal("Failed to run: " + err.Error())
+            content = append(content, err.Error())
+        } else {
+            content = append(content, b.String())
         }
-        content = append(content, b.String())
         b.Reset()
     }
     result <- strings.Join(content, "\n")

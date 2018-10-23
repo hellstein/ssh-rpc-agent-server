@@ -6,16 +6,12 @@ import (
 )
 
 /*
-    Parse the machine raw data, returning []I_Machine
+    Parse the machine raw data, returning I_Machine
 */
-func ParseMachineData(raw []byte) []I_Machine {
-    r := []I_Machine{}
-    var ms []Machine
-    json.Unmarshal(raw, &ms)
-    for i, _ := range ms {
-        r = append(r, &ms[i])
-    }
-    return r
+func ParseMachineData(raw []byte) I_Machine {
+    var m Machine
+    json.Unmarshal(raw, &m)
+    return &m
 }
 
 /*
