@@ -22,9 +22,16 @@ func getHandler(mgr jobmgr.I_Mgr) func(http.ResponseWriter, *http.Request) {
         // Create job for each machine
         jobs := mgr.CreateJobs(mconf, tconf)
         // Execute jobs
-        results := mgr.ExecuteJobs(jobs)
-        // Output results
-        fmt.Fprint(w, results)
+        result := make(chan string, len(jobs))
+        mgr.ExecuteJobs(jobs, result)
+        cter := 0
+        for i := range result {
+            fmt.Fprint(w, i)
+            cter = cter + 1
+            if cter == len(jobs) {
+                close(result)
+            }
+        }
     }
 }
 

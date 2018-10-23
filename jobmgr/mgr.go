@@ -2,12 +2,13 @@ package jobmgr
 
 import (
 //    "fmt"
+//    "net/http"
 )
 
 
 type I_Mgr interface {
     CreateJobs([]byte, []byte) []I_Job
-    ExecuteJobs([]I_Job) map[string]string
+    ExecuteJobs([]I_Job, chan string)
 }
 
 
@@ -27,16 +28,9 @@ func (mgr *Mgr) CreateJobs(mconf []byte, tconf []byte) []I_Job {
     return jobs
 }
 
-func (mgr *Mgr) ExecuteJobs(jobs []I_Job) map[string]string {
-    results := map[string]string{}
-    var err error
-    var msg string
+func (mgr *Mgr) ExecuteJobs(jobs []I_Job, result chan string) {
     for index, _ := range jobs {
-        msg, err = jobs[index].Execute()
-        if err != nil {
-            msg = err.Error()
-        }
-        results[jobs[index].GetMachine()] = msg
+        //machine := jobs[index].GetMachine()
+        go jobs[index].Execute(result)
     }
-    return results
 }
