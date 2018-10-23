@@ -1,4 +1,4 @@
-package assignment
+package jobmgr
 
 
 
@@ -11,7 +11,7 @@ import (
 */
 type I_Task interface {
     Serialize() string
-    GetSummary() string
+    GetTopic() string
 }
 
 /*
@@ -34,7 +34,7 @@ func (t *Task) Serialize() string {
 /*
     Get description of task
 */
-func (t *Task) GetSummary() string {
+func (t *Task) GetTopic() string {
     return t.Topic
 }
 
