@@ -1,4 +1,6 @@
-language: generic
+language: go
+go:
+    - 1.10.x
 sudo: required
 dist: trusty
 env:

@@ -8,20 +8,20 @@
 </p>
 <br>
 
-[![GitHub release](https://img.shields.io/github/release/hellstein/sshrpcagent-docker.svg)](https://github.com/hellstein/sshrpcagent-docker/releases)
-![Github All Releases](https://img.shields.io/github/downloads/hellstein/sshrpcagent-docker/total.svg)
-x86: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/sshrpcagent-docker-x86.svg)](https://hub.docker.com/r/hellstein/sshrpcagent-docker-x86/tags/)
-armv6: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/sshrpcagent-docker-x86.svg)](https://hub.docker.com/r/hellstein/sshrpcagent-docker-x86/tags/)
+[![GitHub release](https://img.shields.io/github/release/hellstein/ssh-rpc-agent.svg)](https://github.com/hellstein/ssh-rpc-agent/releases)
+![Github All Releases](https://img.shields.io/github/downloads/hellstein/ssh-rpc-agent/total.svg)
+x86: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/ssh-rpc-agent-x86.svg)](https://hub.docker.com/r/hellstein/ssh-rpc-agent-x86/tags/)
+armv6: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/ssh-rpc-agent-x86.svg)](https://hub.docker.com/r/hellstein/ssh-rpc-agent-x86/tags/)
 
-![Travis (.org) branch](https://img.shields.io/travis/hellstein/sshrpcagent-docker/BRANCH.svg)
-![GitHub](https://img.shields.io/github/license/hellstein/sshrpcagent-docker.svg)
+![Travis (.org) branch](https://img.shields.io/travis/hellstein/ssh-rpc-agent/BRANCH.svg)
+![GitHub](https://img.shields.io/github/license/hellstein/ssh-rpc-agent.svg)
 
 # Deployment (As a deployer)
 
 ### Get release and unzip
 
 ```
-wget https://github.com/hellstein/sshrpcagent-docker/releases/download/0.0.3/sra-0.0.3.zip
+wget https://github.com/hellstein/ssh-rpc-agent/releases/download/0.0.3/sra-0.0.3.zip
 unzip sra-0.0.3.zip
 ```
 
@@ -44,8 +44,8 @@ curl http://localhost:8000/test -F "machinefile=@machine.json" -F "taskfile=@tas
 
 ### Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/hellstein/sshrpcagent-docker/blob/master/.github/CONTRIBUTING.md) for contributing.
-For details on our [code of conduct](https://github.com/hellstein/sshrpcagent-docker/blob/master/.github/CODE_OF_CONDUCT.md), and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/hellstein/ssh-rpc-agent/blob/master/.github/CONTRIBUTING.md) for contributing.
+For details on our [code of conduct](https://github.com/hellstein/ssh-rpc-agent/blob/master/.github/CODE_OF_CONDUCT.md), and the process for submitting pull requests to us.
 
 ### Versioning
 
@@ -55,14 +55,14 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * **dorrywhale** - *Initial work* - [dorrywhale](https://github.com/dorrywhale)
 
-See also the list of [contributors](https://github.com/hellstein/sshrpcagent-docker/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/hellstein/ssh-rpc-agent/graphs/contributors) who participated in this project.
 
 ### Acknowledgments
 
-See [Acknowledgments](https://github.com/hellstein/sshrpcagent-docker/blob/master/.github/ACKNOWLEDGMENTS.md)
+See [Acknowledgments](https://github.com/hellstein/ssh-rpc-agent/blob/master/.github/ACKNOWLEDGMENTS.md)
 
 
 ### License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/hellstein/sshrpcagent-docker/blob/master/LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/hellstein/ssh-rpc-agent/blob/master/LICENSE.md) file for details
 
