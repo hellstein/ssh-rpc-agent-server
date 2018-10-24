@@ -13,7 +13,7 @@
 x86: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/ssh-rpc-agent-x86.svg)](https://hub.docker.com/r/hellstein/ssh-rpc-agent-x86/tags/)
 armv6: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/ssh-rpc-agent-x86.svg)](https://hub.docker.com/r/hellstein/ssh-rpc-agent-x86/tags/)
 
-![Travis (.org) branch](https://img.shields.io/travis/hellstein/ssh-rpc-agent/BRANCH.svg)
+![Travis (.org) branch](https://img.shields.io/travis/hellstein/ssh-rpc-agent/master.svg)
 ![GitHub](https://img.shields.io/github/license/hellstein/ssh-rpc-agent.svg)
 
 # Deployment (As a deployer)
@@ -21,8 +21,8 @@ armv6: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/ssh-rpc-ag
 ### Get release and unzip
 
 ```
-wget https://github.com/hellstein/ssh-rpc-agent/releases/download/0.0.3/sra-0.0.3.zip
-unzip sra-0.0.3.zip
+wget https://github.com/hellstein/ssh-rpc-agent/releases/download/0.0.6/ssh-rpc-agent-0.0.6.zip
+unzip ssh-rpc-agent-0.0.6.zip
 ```
 
 ### Start the service
