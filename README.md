@@ -2,9 +2,9 @@
   <img width="250" src="LOGO">
 </p>
 
-<h1 align="center"> Project Title </h1>
+<h1 align="center"> ssh-rpc-agent </h1>
 <p align="center">
-  <b >One Paragraph of project description goes here</b>
+  <b >ssh rpc agent to manipulate machines remotely</b>
 </p>
 <br>
 

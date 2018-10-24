@@ -22,6 +22,7 @@ start: $(COMP_DIR)/$(NAME).yml
 .PHONY: stop
 stop: $(COMP_DIR)/$(NAME).yml
 	docker-compose -p $(NAME) -f $(COMP_DIR)/$(NAME).yml down
+	sudo rm -rf $(SDRUNDIR)
 
 .PHONY: restart
 restart: $(COMP_DIR)/$(NAME).yml
@@ -38,5 +39,4 @@ list: $(COMP_DIR)
 
 .PHONY: remove
 remove: $(COMP_DIR)/$(NAME).yml
-	sudo rm -rf $(SDRUNDIR)
 	rm $(COMP_DIR)/$(NAME).yml
