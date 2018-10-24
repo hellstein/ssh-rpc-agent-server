@@ -24,6 +24,7 @@ func getHandler(mgr jobmgr.I_Mgr) func(http.ResponseWriter, *http.Request) {
         // Execute jobs
         result := make(chan string)
         mgr.ExecuteJobs(jobs, result)
+        w.Header().Set("Content-Type", "application/json")
         fmt.Fprint(w, <-result)
     }
 }

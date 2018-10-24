@@ -6,6 +6,7 @@ import (
     "golang.org/x/crypto/ssh"
     "bytes"
     "strings"
+    "encoding/json"
 //    "os"
 )
 
@@ -57,7 +58,7 @@ func (job *Job) RPC(dest string, authConf *ssh.ClientConfig, result chan string)
     // Each ClientConn can support multiple interactive sessions,
     // represented by a Session.
     tasks := job.Tasks
-    content := []string{job.GetMachine(),}
+    content := Result{Machine: job.GetMachine(), TRS: []TaskResult{}}
     for index, _ := range tasks {
         // Once a Session is created, you can execute a single command on
         // the remote side using the Run method.
@@ -67,18 +68,20 @@ func (job *Job) RPC(dest string, authConf *ssh.ClientConfig, result chan string)
         }
         defer session.Close()
 
+        tr := TaskResult{Topic: tasks[index].GetTopic()}
         var b bytes.Buffer
         session.Stdout = &b
-        content = append(content, tasks[index].GetTopic())
         cmd := job.GetTasks()[index]
         if err := session.Run(cmd); err != nil {
-            content = append(content, err.Error())
+            tr.Msg = err.Error()
         } else {
-            content = append(content, b.String())
+            tr.Msg = b.String()
         }
+        content.TRS = append(content.TRS, tr)
         b.Reset()
     }
-    result <- strings.Join(content, "\n")
+    re, _ := json.Marshal(&content)
+    result <- string(re)
 }
 
 
