@@ -17,7 +17,7 @@ func getHandler(mgr jobmgr.I_Mgr) func(http.ResponseWriter, *http.Request) {
         if err != nil {
            log.Fatal(err)
         }
-        mconf := conf["machines"]
+        mconf := conf["machine"]
         tconf := conf["tasks"]
         // Create job for each machine
         jobs := mgr.CreateJobs(mconf, tconf)

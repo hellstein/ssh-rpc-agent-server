@@ -18,7 +18,7 @@ func GetConf(r *http.Request) (map[string][]byte, error) {
         return nil, terr
     }
 
-    conf := map[string][]byte{"machines": mconf, "tasks": tconf}
+    conf := map[string][]byte{"machine": mconf, "tasks": tconf}
     return conf, nil
 }
 
