@@ -16,6 +16,7 @@ clean-book:
 .PHONY: mk-image clean-image
 mk-image:
 	go get -v github.com/gorilla/mux 
+	go get -v golang.org/x/crypto/ssh
 	CGO_ENABLED=0 go build -o image/ssh-rpc-agent
 	docker run --rm --privileged multiarch/qemu-user-static:register --reset
 	docker build -t $(OWNER)/$(REPO)-$(ARCH) -f $(DF)-$(ARCH) $(IMAGE_ENV) 
