@@ -21,23 +21,23 @@ script:
 - make mk-image ARCH=$ARCH
 - make mk-deployment VERSION=$TRAVIS_TAG
 deploy:
-- provider: script
-  script: make pushtohub USER=$DOCKER_USER PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_BRANCH
-  on:
-    all_branches: true
-    condition: "$TRAVIS_BRANCH =~ ^master|develop$"
-- provider: script
-  script: make pushtohub USER=$DOCKER_USER PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_TAG
-  on:
-    tags: true
-    all_branches: true
-- provider: releases
-  prerelease: true
-  skip_cleanup: true
-  file_glob: true
-  file: "./*.zip"
-  on:
-    tags: true
-    all_branches: true
-  api_key:
-    secure: dKWGpQ+UEgJgJV0WCF90rRNKfE335r/gnLbBZDUZqL+hcS6G8kwtZip4utvUW/s7B/PM7fYacz0cDWW+hAdsh46LW9eMn7anlCVVn2RjpkvEViBxNMfCoDWiPnLorthWtoBOJZpCsGRnXSvIbydP5T+/lPRjtSW6r3ZeDTWhxNICRVtHn9ytUz9cTp4bCYiVDV7nrhJocobL8BIsmB4Dk+EI7uVKdg9XLfQet2D1thBpO08rMD6EGrObWTwXSDbVAzZO4+SMy55nGOVi5Fvgm2/OIimJCbcHBJlCKeUDy3DQvLmMxs7ZKfBeib4SVH45pUp0BYNiANB+WjlYs0Y4xM6pZ+9e5AyC+thYout6ANzi/2iitls9q9q/WGueR6YgA1+d/0LMYzzz1pycpm37fg5gkBsSXjCnn4Ton6LVQUaq82AwkNPL0nY8I03QMIu0huVUfDMjAkMqowCkJKXGpSrwhEGstpWUaVJVh8ri14qiEyeE1+ruJj5XKeSen53hOzTDEQPy+AQMAe90HHevT665KIWDc7/uVIg37P0tFbBcL+wvRZgbUGBvF9dIFOsD8f611QyzU3rQiLj3Zlp/6gfpkNCpQ40wQHjkDR8Hz+5LBlzt74okk4a9eeURKTXF6Mg8viVdXRKUEgxc0eKZOOltbSn8Ops7BXQIRMrc4PI=
+  - provider: script
+    script: make pushtohub USER=$DOCKER_USER PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_BRANCH
+    on:
+      all_branches: true
+      condition: "$TRAVIS_BRANCH =~ ^master|develop$"
+  - provider: script
+    script: make pushtohub USER=$DOCKER_USER PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_TAG
+    on:
+      tags: true
+      all_branches: true
+  - provider: releases
+    prerelease: true
+    skip_cleanup: true
+    file_glob: true
+    file: "./*.zip"
+    on:
+      tags: true
+      all_branches: true
+    api_key:
+      secure: lWXfcxshmyQPW2KBzMryr/apVp5lJMDwISF1jJSQPFf2ICvFVqe6YtXKBHoBQcmyUgLitRWVhcHw5M+Bej6Ra/9szafYJ8oFyQROWGDFDr1IwZ5hEeq+M/VYjJxf7WQEAL58UqZws0XGCE2c2xIA1P008Ccs6/J+wNWEOwdefM5sRq7sc/7V9LmzCOb9C58lwygf8n7YP8/dFPclpSYPK9wabID4J6N39PWndTgIV4lzfpIFiX09tnq7wJHJROj0iI+JqXJs/aSM52NjgQihogdqimOE2Byxv5YUL+y1G9LWO9Flw9Y0/Bcd0nMokUIVmrorX7QNuK0h/MitKkaIDSMy5wkqxMU3juGIkl6aESdK6A4i1eRwL+noL1IYsBM4XAGDA4YU5wOCW+aQ0DMQZNzZDCgbN2YxvK2EENhsahcSx6PQ+t8TYy3ugHFrOQw/n88Tjmj5qRx9jK7RhAjOZnEcNivXTEeB/LcZyR4UMBw064Db4xXv6d37MWPsKT8UzoO7/8ddWSiPMfRFk3u5lLuUaLE7OmcLgkH8XhCngeMY32X2fHO0QYwRPwVfvwrR0RgiBTBDqHqFdsUxhOKqUr50t2ZwiU2019Kfq1yIZixi+dbZbiJ9jANg3eKpAI8JWE49y4MX4zTbUW3MX4ZHsTkgiRZ7hBrzAEOEyr/GW/c=
