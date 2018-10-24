@@ -1,0 +1,41 @@
+language: generic
+sudo: required
+dist: trusty
+env:
+  matrix:
+  - ARCH=x86
+  global:
+  - secure: kuByrjsCxvZtrpBFfVdueCbJGQny9xWXhTXVkKoGYMf7UjIGtc+qKk2yrD9SYYi5paIZ0GZh/QOU5Nk/GC1rtqz01A10hp9WHXmoDDe/p9KNJjZbKzTesU0dkYuYXGDYTO8uD9cFUcUo4zEnyRudo/AoV5i6YHNsnHqMPLGifqL4gpUgHZJXp8oteYtaXOwPM9gM4bXwTshhEQpN5aCyok8F5UGAZYFvEV+T1JKtqO3l99O6t7m2eFUiYtQ7nOCGkYUnoBxasf1zPilK6dhjG3wqyvDQk+zOlri5C0dkij6t9cgEvkwbNRmuKk/PdkCqcZvle6ob32E7skB6S0mQihbX0P3K7kI7OSkcMYBc+Nx08TFs1hk16sKyj6PYTa9Ja/2Lj+aSgS9QxLZXxdqBwQQGBBeaby06R7pJGNUerG7ybJ8aVcGFrOTEPJbCs4oipOcAoN6kORSYCPlGYA2rdA9UjKbmJRF4gR/IUFseKeWE7FNsTmIeE8RE9qKq8oJLuUtzCeQMhCztD+r4rnGpjGb6BCKaM7Z6aTTzwi5HPfUhduL1OliuYFTmvPEJWD9XrkaB6uCC7FT9W9LLtdhN7DSAZBRir/DzkOjUqrsxKYNI8fwyYod3RXI3zXeJbxLgSJ3YRH/a/kN4eowHpJjaQIp+tn/xtOPkgAl3tj5ppts=
+  - secure: IVGdMU2AhBnteT1+BvsMZ7/raTQFTJaEhbUjPGp4OmNSYfVscNREh/Zo5cCfgOkezIPgY8ybuJMwZOJEHfinLxabjxBP4gVN9Xjnn6eR3jut2IIS4YpGQob8z6R7RZ/PzBurREuBixE63wKrmTnpK9BtaILBtGFfzkyodDVRdzHiZJVCOfYPtS1YxMaqrYLNW3vs/LUEAsGrB1Bl/J58ueLchdxyWa5nWhg1YZjnjdrvJxoM3iB7KyJb9pWhQLxUUn/vER7+IJXaOl1thoq8P7HkWh6KsVSml8AuxRTf5G3qoGs5O7GR0eIo7hVmWQlBW5KF5N2n6/j4S+oem4vPIV5T4CJgu5nLRsdbYGR2eDtmsTI+NWKNjLbOt4DWqpJb8YdSNwdphPU6DHxkq7FQAFL0/ewSHmMwqN5udsNCZZLj8HABWKaq/yL21+eCLQOrwKmZy8CZWb8YUR0Ni4JK00fRNLpR9EKg+PsobgfdnSQSGxJrGx2DkVuOfMk4WUIufTETQtiumOTFMjaDw5TlIL+242dV3F8hpkUHQFkl4+IJXIEq6qlCArl6tBDkxyuxKFeREUGpojPW5fTsFZxp2T4f60UqcqHBjyzAhncRu4lyLwZA9UtVKWhwR3QS8tdjHIxTFvPnGzTYTsYivHweoWLw5k48XO6tyI4W7FVYQSA=
+services:
+- docker
+branches:
+  only:
+  - master
+  - develop
+  - "/^\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
+install: true
+script:
+- make mk-image ARCH=$ARCH
+- make mk-deployment VERSION=$TRAVIS_TAG
+deploy:
+- provider: script
+  script: make pushtohub USER=$DOCKER_USER PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_BRANCH
+  on:
+    all_branches: true
+    condition: "$TRAVIS_BRANCH =~ ^master|develop$"
+- provider: script
+  script: make pushtohub USER=$DOCKER_USER PASS=$DOCKER_PASS ARCH=$ARCH TAG=$TRAVIS_TAG
+  on:
+    tags: true
+    all_branches: true
+- provider: releases
+  prerelease: true
+  skip_cleanup: true
+  file_glob: true
+  file: "./*.zip"
+  on:
+    tags: true
+    all_branches: true
+  api_key:
+    secure: dKWGpQ+UEgJgJV0WCF90rRNKfE335r/gnLbBZDUZqL+hcS6G8kwtZip4utvUW/s7B/PM7fYacz0cDWW+hAdsh46LW9eMn7anlCVVn2RjpkvEViBxNMfCoDWiPnLorthWtoBOJZpCsGRnXSvIbydP5T+/lPRjtSW6r3ZeDTWhxNICRVtHn9ytUz9cTp4bCYiVDV7nrhJocobL8BIsmB4Dk+EI7uVKdg9XLfQet2D1thBpO08rMD6EGrObWTwXSDbVAzZO4+SMy55nGOVi5Fvgm2/OIimJCbcHBJlCKeUDy3DQvLmMxs7ZKfBeib4SVH45pUp0BYNiANB+WjlYs0Y4xM6pZ+9e5AyC+thYout6ANzi/2iitls9q9q/WGueR6YgA1+d/0LMYzzz1pycpm37fg5gkBsSXjCnn4Ton6LVQUaq82AwkNPL0nY8I03QMIu0huVUfDMjAkMqowCkJKXGpSrwhEGstpWUaVJVh8ri14qiEyeE1+ruJj5XKeSen53hOzTDEQPy+AQMAe90HHevT665KIWDc7/uVIg37P0tFbBcL+wvRZgbUGBvF9dIFOsD8f611QyzU3rQiLj3Zlp/6gfpkNCpQ40wQHjkDR8Hz+5LBlzt74okk4a9eeURKTXF6Mg8viVdXRKUEgxc0eKZOOltbSn8Ops7BXQIRMrc4PI=

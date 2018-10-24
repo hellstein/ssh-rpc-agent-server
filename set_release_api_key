@@ -1,0 +1,2 @@
+#! /bin/bash
+travis encrypt $1 --add deploy.api_key

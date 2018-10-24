@@ -1,214 +1,51 @@
-# ssh-rpc-agent 
+<p align="center">
+  <img width="250" src="LOGO">
+</p>
 
- Request a service from a program located in another computer on a network without knowing details for the remote interaction. 
+<h1 align="center"> Project Title </h1>
+<p align="center">
+  <b >One Paragraph of project description goes here</b>
+</p>
+<br>
 
-# Who should use
+[![GitHub release](https://img.shields.io/github/release/hellstein/sshrpcagent-docker.svg)](https://github.com/hellstein/sshrpcagent-docker/releases)
+![Github All Releases](https://img.shields.io/github/downloads/hellstein/sshrpcagent-docker/total.svg)
+x86: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/sshrpcagent-docker-x86.svg)](https://hub.docker.com/r/hellstein/sshrpcagent-docker-x86/tags/)
+armv6: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/sshrpcagent-docker-x86.svg)](https://hub.docker.com/r/hellstein/sshrpcagent-docker-x86/tags/)
 
-IT administrator who is entitled to manage multiple remote severs
+![Travis (.org) branch](https://img.shields.io/travis/hellstein/sshrpcagent-docker/BRANCH.svg)
+![GitHub](https://img.shields.io/github/license/hellstein/sshrpcagent-docker.svg)
 
+# Deployment (As a deployer)
 
-# When to use
-
-* Update system of multiple remote servers
-* Deploy ssh key to multiple remote servers
-* Deploy services on multiple remote servers
-
-# Quick start
-
-### Download 
-
-* Download zip from [here](https://github.com/hellstein/ssh-rpc-agent/releases)
-* Unzip
-
-```
-  unzip ssh-rpc-agent-m.n.p.zip
-```
-
-### Execute example tasks
-
-* Change 'username' and 'sudo password' in `example/machines.json`
-* If the CPU arch of your computer is `x86-64`, execute by
+### Get release and unzip
 
 ```
-  ./ssh-rpc-agent-amd64 --tf example/tasks.json --mf example/machines.json
+wget https://github.com/hellstein/sshrpcagent-docker/releases/download/0.0.3/sra-0.0.3.zip
+unzip sra-0.0.3.zip
 ```
 
-# Deployment
-
-### Download 
-
-* Download zip from [here](https://github.com/hellstein/ssh-rpc-agent/releases)
-* Unzip
-
+### Start the service
 ```
-  unzip ssh-rpc-agent-m.n.p.zip
+cd imageAPI
+make config SSHDATA=[SSH CONFIG DIR] NAME=sra
+make start NAME=sra
 ```
 
-### Create task.json and machines.json 
-
-* Task sample
-
+### Run ssh-rpc-agent jobs
 ```
-  [
-    {
-    	"Topic": "show files in HOME",
-    	"Tasks": [
-    		"ls $HOME"
-      	]
-    }
-  ] 
-
+#! /bin/bash
+curl http://localhost:8000/test -F "machinefile=@machine.json" -F "taskfile=@tasks.json" -vvv
 ```
 
-* Machine sample
-```
-  [
-    {
-    	"Domain": "127.0.0.1",
-    	"Port": "22",
-    	"Username": "<username>",
-    	"SudoPassword": "<sudo password>",
-    	"Mode": "USERPASS"
-    }
-  ] 
-```
-
-### Execute application locally
-
-* Choose local architecture
-
-* For amd64
-
-```
-  ./ssh-rpc-agent-amd64 --tf <task file> --mf <machine file>
-```
-
-* For arm
-
-```
-  ./ssh-rpc-agent-arm --tf <task file> --mf <machine file>
-```
-
-* For 386
-
-```
-  ./ssh-rpc-agent-386 --tf <task file> --mf <machine file>
-```
-
-# Usage
-
-```
-
-  NAME:
-     ssh-rpc-agent-amd64 - RPC support tool
-
-  USAGE:
-     ssh-rpc-agent-amd64 [global options] command [command options] [arguments...]
-
-  VERSION:
-     0.0.1
-
-  COMMANDS:
-       help, h  Shows a list of commands or help for one command
-
-  GLOBAL OPTIONS:
-     --machinefile value, --mf value  Specify the machine configuration file
-     --taskfile value, --tf value     Specify the task configuration file
-     --help, -h                       show help
-     --version, -v                    print the version
-```
-
-### Explanation of machine configuration
-
-* Mode `SSHKEY`: log in with an SSH private key 
-
-```
-  [
-    {
-	"Label": "host name, it should be the same with Host in ~/.ssh/config",
-	"SudoPassword": "sudo Password of remote computer",
-	"Mode": "SSHKEY"
-    }
-  ] 
-```
-
-* Mode `SSHUSER`: log in with password
-
-```
-  [
-    {
-  	"Domain": "domain or IP of remote computer",
-	"Port": "ssh port",
-	"Username": "usernmae of remote computer",
-	"SudoPassword": "sudo Password of remote computer",
-	"Mode": "USERPASS"
-    }
-  ] 
-```
-
-		
-
-### Explanation of task configuration
-```
-  [
-    {
-    	"Topic":  "description of tasks",
-    	"Tasks":  [
-    		"shell command"
-    	]
-    }
-  ]
-```
-
-
-# Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
-
-### Prerequisites
-
-* You have to install `go` firstly, refer to [golang](https://golang.org/doc/install). Test whether it has been installed by
-
-```
-  go version
-```
-
-### Installing packages
-
-In your `GOPATH` directory, install `ssh-rpc-agent`
-
-```
-  go get -v github.com/hellstein/ssh-rpc-agent
-```
-
-### Running the tests
-
-```
-  go test -v -cover ./...
-```
-
-### Build
-
-* Development build
-
-```
-  go build
-```
-
-* Release build
-
-```
-  ./build_release.sh <version>
-```
-
+# Getting Started (TODO, it will be merge into ssh-rpc-agent in its next release)
 
 # Logistics
 
 ### Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/hellstein/ssh-rpc-agent/blob/master/docs/CONTRIBUTING.md) for contributing.
-
-For details on our [code of conduct](https://github.com/hellstein/ssh-rpc-agent/blob/master/docs/CODE_OF_CONDUCT.md), and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/hellstein/sshrpcagent-docker/blob/master/.github/CONTRIBUTING.md) for contributing.
+For details on our [code of conduct](https://github.com/hellstein/sshrpcagent-docker/blob/master/.github/CODE_OF_CONDUCT.md), and the process for submitting pull requests to us.
 
 ### Versioning
 
@@ -216,17 +53,16 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ### Authors
 
-* **hellstein** - *Initial work* - [dorrywhale](https://github.com/dorrywhale)
+* **dorrywhale** - *Initial work* - [dorrywhale](https://github.com/dorrywhale)
 
-See also the list of [contributors](https://github.com/hellstein/ssh-rpc-agent/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/hellstein/sshrpcagent-docker/graphs/contributors) who participated in this project.
 
 ### Acknowledgments
 
-See [Acknowledgments](https://github.com/hellstein/ssh-rpc-agent/blob/master/docs/ACKNOWLEDGMENTS.md)
+See [Acknowledgments](https://github.com/hellstein/sshrpcagent-docker/blob/master/.github/ACKNOWLEDGMENTS.md)
 
 
 ### License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/hellstein/ssh-rpc-agent/blob/master/LICENSE.md) file for details
-
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/hellstein/sshrpcagent-docker/blob/master/LICENSE.md) file for details
 

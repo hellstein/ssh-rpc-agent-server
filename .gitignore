@@ -2,3 +2,5 @@
 ./tasks.json
 *.zip
 ssh-rpc-agent*
+sshdata*
+example

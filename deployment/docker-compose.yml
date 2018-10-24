@@ -1,0 +1,11 @@
+version: '3'
+services:
+  ssh-rpc-agent:
+    image: ${OWNER}/${REPO}:${VERSION}
+    tty: true
+    ports:
+        - "${PORT:-8000}:8000"
+    user: root
+    restart: unless-stopped
+    volumes:
+      - ${SSHRUNDATA}:/etc/ssh
