@@ -4,7 +4,7 @@ services:
     image: ${OWNER}/${REPO}:${VERSION}
     tty: true
     ports:
-        - "${PORT:-8000}:8000"
+        - "${PORT:-8900}:8900"
     user: root
     restart: unless-stopped
     volumes:

@@ -68,6 +68,15 @@ func (job *Job) RPC(dest string, authConf *ssh.ClientConfig, result chan string)
         }
         defer session.Close()
 
+        modes := ssh.TerminalModes{
+          ssh.ECHO:          0,     // disable echoing
+          ssh.TTY_OP_ISPEED: 14400, // input speed = 14.4kbaud
+          ssh.TTY_OP_OSPEED: 14400, // output speed = 14.4kbaud
+        }
+    // Request pseudo terminal
+        if err := session.RequestPty("xterm", 40, 80, modes); err != nil {
+            log.Fatal("request for pseudo terminal failed: ", err)
+        }
         tr := TaskResult{Topic: tasks[index].GetTopic()}
         var b bytes.Buffer
         session.Stdout = &b
