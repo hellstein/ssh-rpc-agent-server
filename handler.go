@@ -5,27 +5,30 @@ import (
     "net/http"
     "log"
     "github.com/hellstein/ssh-rpc-agent/jobmgr"
+    "github.com/gorilla/websocket"
 )
 
 
 
 
 func getHandler(mgr jobmgr.I_Mgr) func(http.ResponseWriter, *http.Request) {
+    var upgrader = websocket.Upgrader{}
+
     return func (w http.ResponseWriter, r *http.Request) {
-        // Get machine conf and task conf from request
-        conf, err := GetConf(r)
+        conn, err := upgrader.Upgrade(w, r, nil)
+        if err != nil {
+          log.Println("Upgrade:", err)
+          return
+        }
+
+        // Get job from request
+        job, err := mgr.CreateJob(conn)
         if err != nil {
            log.Fatal(err)
         }
-        mconf := conf["machine"]
-        tconf := conf["tasks"]
-        // Create job for each machine
-        jobs := mgr.CreateJobs(mconf, tconf)
-        // Execute jobs
-        result := make(chan string)
-        mgr.ExecuteJobs(jobs, result)
-        w.Header().Set("Content-Type", "application/json")
-        fmt.Fprint(w, <-result)
+        fmt.Println(job)
+        mgr.ExecuteJob(job, conn)
+        //conn.WriteMessage(websocket.TextMessage, []byte("OK"))
     }
 }
 

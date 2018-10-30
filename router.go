@@ -7,6 +7,6 @@ import (
 
 func CreateRouter(mgr jobmgr.I_Mgr) *mux.Router {
     router := mux.NewRouter()
-    router.HandleFunc("/test", getHandler(mgr)).Methods("POST")
+    router.HandleFunc("/test", getHandler(mgr))
     return router
 }
