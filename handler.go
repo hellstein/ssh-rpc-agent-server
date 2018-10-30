@@ -1,7 +1,7 @@
 package main
 
 import (
-    "fmt"
+//    "fmt"
     "net/http"
     "log"
     "github.com/hellstein/ssh-rpc-agent/jobmgr"
@@ -21,14 +21,8 @@ func getHandler(mgr jobmgr.I_Mgr) func(http.ResponseWriter, *http.Request) {
           return
         }
 
-        // Get job from request
-        job, err := mgr.CreateJob(conn)
-        if err != nil {
-           log.Fatal(err)
-        }
-        fmt.Println(job)
-        mgr.ExecuteJob(job, conn)
-        //conn.WriteMessage(websocket.TextMessage, []byte("OK"))
+        mgr.SetConn(conn)
+        mgr.ExecuteJob()
     }
 }
 
