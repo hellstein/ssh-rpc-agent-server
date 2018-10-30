@@ -4,3 +4,4 @@
 ssh-rpc-agent*
 sshdata*
 example
+deployment/compose
