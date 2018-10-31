@@ -1,0 +1,15 @@
+{
+  "name": "wsclient",
+  "version": "1.0.0",
+  "description": "websocket client for ssh-rpc-agent",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "phoenix.lv",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^6.1.0",
+    "yargs": "^12.0.2"
+  }
+}

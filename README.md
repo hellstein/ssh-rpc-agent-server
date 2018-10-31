@@ -19,26 +19,27 @@ armv6: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/ssh-rpc-ag
 # Deployment (As a deployer)
 
 ### Get release and unzip
-
 ```
-wget https://github.com/hellstein/ssh-rpc-agent/releases/download/0.0.6/ssh-rpc-agent-0.0.6.zip
-unzip ssh-rpc-agent-0.0.6.zip
+wget https://github.com/hellstein/ssh-rpc-agent/releases/download/0.1.0/ssh-rpc-agent-0.1.1.zip
+unzip ssh-rpc-agent-0.1.1.zip
 ```
 
 ### Start the service
 ```
-cd imageAPI
+cd agent/imageAPI
 make config SSHDATA=[SSH CONFIG DIR] NAME=sra
 make start NAME=sra
 ```
 
 ### Run ssh-rpc-agent jobs
+
 ```
-#! /bin/bash
-curl http://localhost:8000/test -F "machinefile=@machine.json" -F "taskfile=@tasks.json" -vvv
+cd agent/wsClient
+npm install
+node client.js --url 127.0.0.1:8900/test --machineFile machine.json --taskFile tasks.json
 ```
 
-# Getting Started (TODO, it will be merge into ssh-rpc-agent in its next release)
+# Getting Started (TODO)
 
 # Logistics
 

@@ -1,0 +1,11 @@
+{
+    "domain": "12.34.56.78",
+    "port": "22",
+    "username": "admin",
+    "mode": "USERPASS",
+    "credential": {
+        "password": "type_your_pass"
+    },
+    "sudopassword": "type_your_sudo_pass"
+}
+

@@ -3,6 +3,7 @@ DOCS = $(CURDIR)/docs
 IMAGE_ENV = $(CURDIR)/image
 DF = $(IMAGE_ENV)/Dockerfile
 DEPLOYMENT = $(CURDIR)/deployment
+WSCLIENT = $(CURDIR)/wsclient
 OWNER = hellstein
 REPO = ssh-rpc-agent
 
@@ -28,12 +29,13 @@ clean-image:
 
 
 .PHONY: mk-deployment clean-deployment
-mk-deployment: $(DEPLOYMENT)
+mk-deployment: $(DEPLOYMENT) $(WSCLIENT)
 	sed -i s+VERSION=.*+VERSION=$(VERSION)+g $(DEPLOYMENT)/temp.env
-	mkdir imageAPI 
-	cp $(DEPLOYMENT)/docker-compose.yml $(DEPLOYMENT)/temp.env $(DEPLOYMENT)/Makefile imageAPI/
-	zip -r $(REPO)-$(VERSION).zip imageAPI
-	rm -rf imageAPI
+	mkdir -p agent/imageAPI agent/wsClient
+	cp $(DEPLOYMENT)/docker-compose.yml $(DEPLOYMENT)/temp.env $(DEPLOYMENT)/Makefile agent/imageAPI/
+	cp $(WSCLIENT)/client.js $(WSCLIENT)/package.json $(WSCLIENT)/package-lock.json agent/wsClient/
+	zip -r $(REPO)-$(VERSION).zip agent
+	rm -rf agent
 
 clean-deployment: $(REPO)-$(VERSION).zip
 	rm $(REPO)-$(VERSION).zip
