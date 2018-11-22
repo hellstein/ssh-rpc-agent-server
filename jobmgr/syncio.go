@@ -4,7 +4,7 @@ import (
     "log"
     "golang.org/x/crypto/ssh"
     "github.com/gorilla/websocket"
-    "bytes"
+//    "bytes"
 )
 func syncIO (session *ssh.Session, conn *websocket.Conn, client *ssh.Client) {
     go func(*ssh.Session, *websocket.Conn, *ssh.Client) {
@@ -20,11 +20,11 @@ func syncIO (session *ssh.Session, conn *websocket.Conn, client *ssh.Client) {
             session.Close()
         }()
 
-        var b bytes.Buffer
-        session.Stdout = &b
+//        var b bytes.Buffer
+//        session.Stdout = &b
         for {
             // set io.Writer of websocket
-            outbuf := make([]byte, 4096)
+            outbuf := make([]byte, 8192)
             outn, err := sessionReader.Read(outbuf)
             if err != nil {
                 log.Println("sshReader: ", err)
@@ -38,8 +38,8 @@ func syncIO (session *ssh.Session, conn *websocket.Conn, client *ssh.Client) {
                 return
             }
             */
-//            log.Println(outn)
-//            log.Println(string(outbuf[:outn]))
+            log.Println(outn)
+            log.Println(string(outbuf[:outn]))
             err = conn.WriteMessage(websocket.TextMessage, outbuf[:outn])
             if err != nil {
                 log.Println("connWriter: ", err)
@@ -75,7 +75,7 @@ func syncIO (session *ssh.Session, conn *websocket.Conn, client *ssh.Client) {
                 log.Print("connReader: ", err)
                 return
             }
-            log.Println(string(buf[:n]))
+//            log.Println(string(buf[:n]))
             _, err = sessionWriter.Write(buf[:n])
             if err != nil {
                 log.Print("sshWriter: ", err)
