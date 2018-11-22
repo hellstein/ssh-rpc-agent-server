@@ -1,0 +1,10 @@
+{
+    "domain": "12.34.56.78",
+    "port": "22",
+    "username": "CHANGE USER NAME",
+    "mode": "USERPASS",
+    "credential": {
+        "password": "CHANGE PASS"
+    },
+    "sudopassword": "CHANGE PASS"
+}

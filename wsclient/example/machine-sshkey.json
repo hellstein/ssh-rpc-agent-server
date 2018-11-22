@@ -1,0 +1,11 @@
+{
+    "domain": "12.34.56.78",
+    "port": "22",
+    "username": "CHANGE USER NAME",
+    "mode": "SSHKEY",
+    "credential": {
+        "sshkeyfile": "/path/to/ssh/privatekeyfile"
+    },
+    "sudopassword": "CHANGE SUDO PASSWORD"
+}
+

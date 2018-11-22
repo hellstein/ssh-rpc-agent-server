@@ -1,8 +1,6 @@
-./machines.json
-./tasks.json
 *.zip
 ssh-rpc-agent*
 sshdata*
-example
 deployment/compose
 node_modules
+*.bk

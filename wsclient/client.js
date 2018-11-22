@@ -34,14 +34,29 @@ ws.on('open', function open() {
 
 ws.on('close', function close() {
   console.log('disconnected');
-  rl.close()
+  process.exit();
 });
 
+//more = ""
 ws.on('message', function incoming(data) {
-  console.log(data);
+   // more = more + data;
+   // console.log(more);
+    console.log(data);
 
 });
 
+var stdin = process.stdin;
+stdin.setRawMode( true );
+stdin.resume();
+//stdin.setEncoding('utf8');
+
+stdin.on('data', function (key) {
+    if (key === '\u0003') {
+        process.exit();
+    }
+    ws.send(key)
+});
+/*
 const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
@@ -52,3 +67,4 @@ const rl = readline.createInterface({
 rl.on('line', function(line){
   ws.send(line)
 })
+*/
