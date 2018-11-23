@@ -1,13 +1,13 @@
 package jobmgr
-
 import (
-    "log"
     "golang.org/x/crypto/ssh"
     "github.com/gorilla/websocket"
-//    "bytes"
+    "log"
 )
-func syncIO (session *ssh.Session, conn *websocket.Conn, client *ssh.Client) {
-    go func(*ssh.Session, *websocket.Conn, *ssh.Client) {
+
+
+func syncIO(session *ssh.Session, client *ssh.Client, conn *websocket.Conn) {
+    go func(*ssh.Session, *ssh.Client, *websocket.Conn) {
         sessionReader, err := session.StdoutPipe()
         if err != nil {
           log.Fatal(err)
@@ -20,8 +20,6 @@ func syncIO (session *ssh.Session, conn *websocket.Conn, client *ssh.Client) {
             session.Close()
         }()
 
-//        var b bytes.Buffer
-//        session.Stdout = &b
         for {
             // set io.Writer of websocket
             outbuf := make([]byte, 8192)
@@ -30,25 +28,16 @@ func syncIO (session *ssh.Session, conn *websocket.Conn, client *ssh.Client) {
                 log.Println("sshReader: ", err)
                 return
             }
-            /*
-            log.Println(b.Len())
-            outn, err := (&b).Read(outbuf)
-            if err != nil {
-                log.Println("sshReader: ", err)
-                return
-            }
-            */
-            log.Println(outn)
-            log.Println(string(outbuf[:outn]))
-            err = conn.WriteMessage(websocket.TextMessage, outbuf[:outn])
-            if err != nil {
-                log.Println("connWriter: ", err)
-                return
-            }
-        }
-    }(session, conn, client)
+//           fmt.Fprint(os.Stdout, string(outbuf[:outn]))
+           err = conn.WriteMessage(websocket.TextMessage, outbuf[:outn])
+           if err != nil {
+               log.Println("connWriter: ", err)
+               return
+           }
+       }
+    }(session, client, conn)
 
-    go func(*ssh.Session, *websocket.Conn, *ssh.Client) {
+    go func(*ssh.Session, *ssh.Client, *websocket.Conn) {
         sessionWriter, err := session.StdinPipe()
         if err != nil {
             log.Fatal(err)
@@ -69,19 +58,21 @@ func syncIO (session *ssh.Session, conn *websocket.Conn, client *ssh.Client) {
                 log.Println("connReaderCreator: ", err)
                 return
             }
-            buf := make([]byte, 4096)
+            //reader := os.Stdin
+            buf := make([]byte, 1024)
             n, err := reader.Read(buf)
             if err != nil {
-                log.Print("connReader: ", err)
+                log.Print(err)
                 return
             }
-//            log.Println(string(buf[:n]))
             _, err = sessionWriter.Write(buf[:n])
             if err != nil {
-                log.Print("sshWriter: ", err)
+                log.Print(err)
                 conn.WriteMessage(websocket.TextMessage, []byte(err.Error()))
                 return
             }
         }
-    }(session, conn, client)
+    }(session, client, conn)
+
+
 }

@@ -45,9 +45,7 @@ func (mgr *Mgr) getConf() []byte {
 }
 
 func (mgr *Mgr) ExecuteJob() {
-    /*
     mgr.CreateJob(mgr.getConf())
     mgr.Job.Execute(mgr.Conn)
-    */
-    mgr.Job.Execute()
+    //mgr.Job.Execute()
 }

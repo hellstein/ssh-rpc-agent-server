@@ -41,14 +41,14 @@ ws.on('close', function close() {
 ws.on('message', function incoming(data) {
    // more = more + data;
    // console.log(more);
-    console.log(data);
+    process.stdout.write(data);
 
 });
 
 var stdin = process.stdin;
 stdin.setRawMode( true );
 stdin.resume();
-//stdin.setEncoding('utf8');
+stdin.setEncoding('utf8');
 
 stdin.on('data', function (key) {
     if (key === '\u0003') {

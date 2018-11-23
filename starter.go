@@ -1,6 +1,4 @@
 package main
-
-/*
 import (
     "log"
     "net/http"
@@ -11,4 +9,3 @@ func main() {
     mgr := &jobmgr.Mgr{}
     log.Fatal(http.ListenAndServe(":8900", CreateRouter(mgr)))
 }
-*/

@@ -5,18 +5,14 @@ import (
     "golang.org/x/crypto/ssh"
     "strings"
     "golang.org/x/crypto/ssh/terminal"
-
-//    "fmt"
     "os"
-//    "github.com/gorilla/websocket"
-//    "bytes"
-//    "bufio"
+    "github.com/gorilla/websocket"
 )
 
 
 type I_Job interface {
-//    Execute(*websocket.Conn)
-    Execute()
+    Execute(*websocket.Conn)
+//    Execute()
 }
 
 
@@ -42,7 +38,6 @@ func (job *Job) GetTaskCMD() string {
 
 
 func (job *Job) GetSSH() (*ssh.Session, *ssh.Client) {
-//func (job *Job) GetSSH() {
 
     // Get client conf according to machine conf
     authConf, dest, err := job.Machine.GetAuthConf()
@@ -66,15 +61,13 @@ func (job *Job) GetSSH() (*ssh.Session, *ssh.Client) {
     return session, client
 }
 
-func (job *Job) Execute() {
+func (job *Job) Execute(conn *websocket.Conn) {
+
     session, client := job.GetSSH()
 
     defer client.Close()
     defer session.Close()
-    session.Stdout = os.Stdout
-    session.Stderr = os.Stderr
-    session.Stdin = os.Stdin
-
+    syncIO(session, client, conn)
     modes := ssh.TerminalModes {
       ssh.ECHO:          1,     // disable echoing
       ssh.TTY_OP_ISPEED: 14400, // input speed = 14.4kbaud
