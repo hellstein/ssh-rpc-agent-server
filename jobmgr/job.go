@@ -4,8 +4,8 @@ import (
     "log"
     "golang.org/x/crypto/ssh"
     "strings"
-    "golang.org/x/crypto/ssh/terminal"
-    "os"
+//    "golang.org/x/crypto/ssh/terminal"
+//    "os"
     "github.com/gorilla/websocket"
 )
 
@@ -57,6 +57,15 @@ func (job *Job) GetSSH() (*ssh.Session, *ssh.Client) {
         log.Fatal("Failed to create session: ", err)
     }
 
+    modes := ssh.TerminalModes {
+      ssh.ECHO:          1,     // disable echoing
+      ssh.TTY_OP_ISPEED: 14400, // input speed = 14.4kbaud
+      ssh.TTY_OP_OSPEED: 14400, // output speed = 14.4kbaud
+    }
+    err = session.RequestPty("xterm-256color", 55, 100, modes)
+    if err != nil {
+        log.Fatal("request for pseudo terminal failed: ", err)
+    }
 
     return session, client
 }
@@ -68,33 +77,6 @@ func (job *Job) Execute(conn *websocket.Conn) {
     defer client.Close()
     defer session.Close()
     syncIO(session, client, conn)
-    modes := ssh.TerminalModes {
-      ssh.ECHO:          1,     // disable echoing
-      ssh.TTY_OP_ISPEED: 14400, // input speed = 14.4kbaud
-      ssh.TTY_OP_OSPEED: 14400, // output speed = 14.4kbaud
-    }
-    fileDescriptor := int(os.Stdin.Fd())
-
-    if terminal.IsTerminal(fileDescriptor) {
-        originalState, err := terminal.MakeRaw(fileDescriptor)
-        if err != nil {
-            log.Println("request for pseudo terminal failed: ", err)
-            return
-        }
-        defer terminal.Restore(fileDescriptor, originalState)
-
-        termWidth, termHeight, err := terminal.GetSize(fileDescriptor)
-        if err != nil {
-            log.Println("request for pseudo terminal failed: ", err)
-            return
-        }
-
-        err = session.RequestPty("xterm-256color", termHeight, termWidth, modes)
-        if err != nil {
-            log.Println("request for pseudo terminal failed: ", err)
-            return
-        }
-    }
 
     // Start remote shell
     cmd := job.GetTaskCMD()
@@ -105,14 +87,3 @@ func (job *Job) Execute(conn *websocket.Conn) {
     }
 }
 
-/*
-func (job *Job) Execute(conn *websocket.Conn) {
-    session, client := job.GetSSH()
-    // Execute ssh session
-    syncIO(session, conn, client)
-    cmd := job.GetTaskCMD()
-    if err := session.Run(cmd); err != nil {
-        log.Println("failed to run cmd: ", err)
-    }
-}
-*/
