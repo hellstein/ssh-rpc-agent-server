@@ -9,9 +9,9 @@ func main() {
     mgr := &jobmgr.Mgr{}
 
     machine := jobmgr.Machine {
-        Domain: "192.168.21.120",
+        Domain: "192.168.21.5",
         Port: "22",
-        Username: "qa",
+        Username: "develop_pan",
         Mode: "USERPASS",
         Credential: jobmgr.Credential{
             Password: "abc123_",
@@ -21,7 +21,7 @@ func main() {
     job := &jobmgr.Job{Machine: &machine, Tasks: []jobmgr.I_Task{}}
     task := jobmgr.Task {
         Topic: "Test",
-        Tasks: []string{"sudo dpkg-reconfigure keyboard-configuration"},
+        Tasks: []string{"sudo iftop"},
     }
     job.Tasks = append(job.Tasks, &task)
     mgr.Job = job
