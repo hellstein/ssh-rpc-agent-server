@@ -3,13 +3,20 @@ package jobmgr
 import (
     "log"
     "golang.org/x/crypto/ssh"
+    "golang.org/x/crypto/ssh/terminal"
     "strings"
-    "github.com/gorilla/websocket"
+//    "fmt"
+//    "github.com/shiena/ansicolor"
+    "os"
+//    "github.com/gorilla/websocket"
+//    "bytes"
+//    "bufio"
 )
 
 
 type I_Job interface {
-    Execute(*websocket.Conn)
+//    Execute(*websocket.Conn)
+    Execute()
 }
 
 
@@ -34,7 +41,9 @@ func (job *Job) GetTaskCMD() string {
 }
 
 
-func (job *Job) GetSSH() (*ssh.Session, *ssh.Client) {
+// func (job *Job) GetSSH() (*ssh.Session, *ssh.Client) {
+func (job *Job) GetSSH() {
+
     // Get client conf according to machine conf
     authConf, dest, err := job.Machine.GetAuthConf()
     if err != nil {
@@ -44,6 +53,8 @@ func (job *Job) GetSSH() (*ssh.Session, *ssh.Client) {
     if err != nil {
         log.Fatal("Failed to dial: ", err)
     }
+    defer client.Close()
+
     // Once a Session is created, you can execute a single command on
     // the remote side using the Run method.
     // Set New session
@@ -51,19 +62,58 @@ func (job *Job) GetSSH() (*ssh.Session, *ssh.Client) {
     if err != nil {
         log.Fatal("Failed to create session: ", err)
     }
+    defer session.Close()
+
+    session.Stdout = os.Stdout
+    session.Stderr = os.Stderr
+//    in, _ := session.StdinPipe()
+    session.Stdin = os.Stdin
     modes := ssh.TerminalModes {
-      ssh.ECHO:          0,     // disable echoing
+      ssh.ECHO:          1,     // disable echoing
       ssh.TTY_OP_ISPEED: 14400, // input speed = 14.4kbaud
       ssh.TTY_OP_OSPEED: 14400, // output speed = 14.4kbaud
     }
-    // Request pseudo terminal
-    if err := session.RequestPty("xterm", 40, 80, modes); err != nil {
-        log.Fatal("request for pseudo terminal failed: ", err)
-    }
+    fileDescriptor := int(os.Stdin.Fd())
 
-    return session, client
+    if terminal.IsTerminal(fileDescriptor) {
+        originalState, err := terminal.MakeRaw(fileDescriptor)
+        if err != nil {
+        }
+        defer terminal.Restore(fileDescriptor, originalState)
+
+        termWidth, termHeight, err := terminal.GetSize(fileDescriptor)
+        if err != nil {
+            log.Fatal("request for pseudo terminal failed: ", err)
+        }
+
+        err = session.RequestPty("xterm-256color", termHeight, termWidth, modes)
+        if err != nil {
+            log.Fatal("request for pseudo terminal failed: ", err)
+        }
+    }
+    // Start remote shell
+    cmd := job.GetTaskCMD()
+
+    if err := session.Run(cmd); err != nil {
+        log.Fatal("failed to start shell: ", err)
+    }
+    /*
+    fmt.Fprint(in, "vim anything.test\n")
+    err = session.Wait()
+	if err != nil {
+		log.Fatal(err)
+	}
+    */
+
+
+//    return session, client
 }
 
+func (job *Job) Execute() {
+    job.GetSSH()
+}
+
+/*
 func (job *Job) Execute(conn *websocket.Conn) {
     session, client := job.GetSSH()
     // Execute ssh session
@@ -73,4 +123,4 @@ func (job *Job) Execute(conn *websocket.Conn) {
         log.Println("failed to run cmd: ", err)
     }
 }
-
+*/
