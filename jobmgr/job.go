@@ -62,7 +62,7 @@ func (job *Job) GetSSH() (*ssh.Session, *ssh.Client) {
       ssh.TTY_OP_ISPEED: 14400, // input speed = 14.4kbaud
       ssh.TTY_OP_OSPEED: 14400, // output speed = 14.4kbaud
     }
-    err = session.RequestPty("xterm-256color", 55, 100, modes)
+    err = session.RequestPty("xterm-256color", 55, 110, modes)
     if err != nil {
         log.Fatal("request for pseudo terminal failed: ", err)
     }
