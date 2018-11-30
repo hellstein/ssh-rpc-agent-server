@@ -27,6 +27,7 @@ function handleWS(ws, machinefile, taskfile) {
             tasks: tconf
           }
           ws.send(JSON.stringify(data));
+          ws.send(msg.windowSizeMsg(JSON.stringify(size.get())));
         })
       })
     });
