@@ -3,6 +3,7 @@ import (
     "golang.org/x/crypto/ssh"
     "github.com/gorilla/websocket"
     "log"
+    "encoding/json"
 )
 
 
@@ -58,21 +59,48 @@ func syncIO(session *ssh.Session, client *ssh.Client, conn *websocket.Conn) {
                 log.Println("connReaderCreator: ", err)
                 return
             }
-            //reader := os.Stdin
+
+            dataTypeBuf := make([]byte, 1)
+            _, err = reader.Read(dataTypeBuf)
+            if err != nil {
+                log.Print(err)
+                return
+            }
+
             buf := make([]byte, 1024)
             n, err := reader.Read(buf)
             if err != nil {
                 log.Print(err)
                 return
             }
-            _, err = sessionWriter.Write(buf[:n])
-            if err != nil {
-                log.Print(err)
-                conn.WriteMessage(websocket.TextMessage, []byte(err.Error()))
-                return
-            }
+
+            switch dataTypeBuf[0] {
+            // when pass data
+            case '1':
+                _, err = sessionWriter.Write(buf[:n])
+                if err != nil {
+                    log.Print(err)
+                    conn.WriteMessage(websocket.TextMessage, []byte(err.Error()))
+                    return
+                }
+             // when resize terminal
+             case '0':
+                 resizeMessage := WindowSize{}
+                 err = json.Unmarshal(buf[:n], &resizeMessage)
+                 if err != nil {
+                     log.Print(err.Error())
+                     continue
+                 }
+                 err = session.WindowChange(resizeMessage.Height, resizeMessage.Width)
+                 if err != nil {
+                     log.Print(err.Error())
+                     conn.WriteMessage(websocket.TextMessage, []byte(err.Error()))
+                     return
+                 }
+             // unexpected data
+             default:
+                 log.Print("Unexpected data type")
+             }
         }
     }(session, client, conn)
-
-
 }
