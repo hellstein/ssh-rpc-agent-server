@@ -33,7 +33,7 @@ mk-deployment: $(DEPLOYMENT) $(WSCLIENT)
 	sed -i s+VERSION=.*+VERSION=$(VERSION)+g $(DEPLOYMENT)/temp.env
 	mkdir -p agent/imageAPI agent/wsClient
 	cp $(DEPLOYMENT)/docker-compose.yml $(DEPLOYMENT)/temp.env $(DEPLOYMENT)/Makefile agent/imageAPI/
-	cp $(WSCLIENT)/client.js cp$(WSCLIENT)/msg.js $(WSCLIENT)/package.json $(WSCLIENT)/package-lock.json agent/wsClient/
+	cp $(WSCLIENT)/client.js $(WSCLIENT)/msg.js $(WSCLIENT)/package.json $(WSCLIENT)/package-lock.json agent/wsClient/
 	zip -r $(REPO)-$(VERSION).zip agent
 	rm -rf agent
 
