@@ -127,6 +127,10 @@ func (m *Machine) GetSigner() (ssh.Signer, error) {
     }
 }
 
+/*
+    Implement I_Machine.GetAutoConf()       Get auth conf for ssh 
+
+*/
 func (m *Machine) GetAuthConf() (*ssh.ClientConfig, string, error) {
     var auth []ssh.AuthMethod
     var e error

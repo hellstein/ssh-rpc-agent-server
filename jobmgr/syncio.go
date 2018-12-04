@@ -6,7 +6,10 @@ import (
     "encoding/json"
 )
 
-
+/*
+    Bind output of ssh session with websocket input
+    Bind websocket output with input of ssh session
+*/
 func syncIO(session *ssh.Session, client *ssh.Client, conn *websocket.Conn) {
     go func(*ssh.Session, *ssh.Client, *websocket.Conn) {
         sessionReader, err := session.StdoutPipe()

@@ -9,24 +9,31 @@ import (
     "github.com/gorilla/websocket"
 )
 
-
+/*
+    Define interface I_Job with only method Execute
+*/
 type I_Job interface {
     Execute(*websocket.Conn)
-//    Execute()
 }
 
 
+/*
+    Implement I_Job
+*/
 type Job struct {
     Machine I_Machine
     Tasks []I_Task
 }
 
+/*
+    Formalize cmd of tasks for ssh
+*/
 func (job *Job) GetTaskCMD() string {
     ts := []string{}
     for index, _ := range job.Tasks {
         task := job.Tasks[index].Serialize()
-        if strings.Contains(task, "sudo") {
-            task = strings.Replace(task, "sudo", "MYPASS="+ job.Machine.GetSudoPassword() + " SUDO_ASKPASS=`echo $HOME`/echopass" +" sudo -A", -1)
+        if strings.Contains(task, "sudo") && strings.Index(task, "sudo")==0 {
+            task = strings.Replace(task, "sudo", "MYPASS="+ job.Machine.GetSudoPassword() + " SUDO_ASKPASS=`echo $HOME`/echopass" +" sudo -A", 1)
             task = "echo -e \"#! /bin/bash\necho \\$MYPASS\">echopass && chmod +x echopass && " + task + " && rm `echo $HOME`/echopass"
         }
         ts = append(ts, task)
@@ -37,6 +44,9 @@ func (job *Job) GetTaskCMD() string {
 }
 
 
+/*
+    Get ssh session and ssh client
+*/
 func (job *Job) GetSSH() (*ssh.Session, *ssh.Client) {
 
     // Get client conf according to machine conf
@@ -70,6 +80,9 @@ func (job *Job) GetSSH() (*ssh.Session, *ssh.Client) {
     return session, client
 }
 
+/*
+    Execute ssh job and communicate through websocket
+*/
 func (job *Job) Execute(conn *websocket.Conn) {
 
     session, client := job.GetSSH()

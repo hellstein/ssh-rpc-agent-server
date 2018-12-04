@@ -6,21 +6,32 @@ import (
 )
 
 
+/*
+    Define interface: I_Mgr for handling ssh job and websocket communication
+*/
 type I_Mgr interface {
     SetConn(*websocket.Conn)
     ExecuteJob()
 }
 
-
+/*
+    Implement I_Mgr
+*/
 type Mgr struct {
     Conn *websocket.Conn
     Job I_Job
 }
 
+/*
+    Set websocket connection
+*/
 func (mgr *Mgr) SetConn(conn *websocket.Conn) {
     mgr.Conn = conn
 }
 
+/*
+    Create job from job description, which is defined as jobmgr.Job
+*/
 func (mgr *Mgr) CreateJob(jobData []byte) error {
     tmpJob := struct {
         Machine Machine
@@ -36,6 +47,9 @@ func (mgr *Mgr) CreateJob(jobData []byte) error {
     return err
 }
 
+/*
+    Get job description from websocket
+*/
 func (mgr *Mgr) getConf() []byte {
     _, jobData, err := mgr.Conn.ReadMessage()
     if err != nil {
@@ -44,8 +58,10 @@ func (mgr *Mgr) getConf() []byte {
     return jobData
 }
 
+/*
+    Execute ssh job
+*/
 func (mgr *Mgr) ExecuteJob() {
     mgr.CreateJob(mgr.getConf())
     mgr.Job.Execute(mgr.Conn)
-    //mgr.Job.Execute()
 }
