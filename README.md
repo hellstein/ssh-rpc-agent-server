@@ -16,7 +16,7 @@ armv6: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/ssh-rpc-ag
 ![Travis (.org) branch](https://img.shields.io/travis/hellstein/ssh-rpc-agent/master.svg)
 ![GitHub](https://img.shields.io/github/license/hellstein/ssh-rpc-agent.svg)
 
-# Deployment (As a deployer)
+# Quick started 
 
 ### Get release and unzip
 ```
@@ -50,8 +50,75 @@ vim example/machine.json
 node client.js --url 127.0.0.1:8900/test --machineFile example/machine.json --taskFile example/tasks.json
 ```
 
-# Getting Started (TODO)
+# Machine and Task file
+### Machine file
+There are 3 credential ssh mode as following,
+* `SSHKEY`
+```json
+{
+    "domain": "12.34.56.78",
+    "port": "22",
+    "username": "ubuntu",
+    "mode": "SSHKEY",
+    "credential": {
+        "sshkeyfile": "/etc/ssh/conf.d/REPLACE_PATH/REPLACE_PRIVATE.KEY"
+    },
+    "sudopassword": "REPLACE_PASS"
+}
+```
+* `SSHKEYWITHPASSPHRASE`
+```json
+{
+    "domain": "12.34.56.78",
+    "port": "22",
+    "username": "dorry",
+    "mode": "SSHKEYWITHPASSPHRASE",
+    "credential": {
+        "sshkeyfile": "/etc/ssh/conf.d/REPLACE_PATH/REPLACE_PRIVATE.KEY",
+        "passphrase": "REPLACE_SCRETE"
+    },
+    "sudopassword": "REPLACE_PASS"
+}
+```
+* `USERPASS`
+```json
+  {
+    "domain": "12.34.56.78",
+    "port": "22",
+    "username": "ubuntu",
+    "mode": "USERPASS",
+    "credential": {
+        "password": "REPLACE_SCRETE"
+    },
+    "sudopassword": "REPLACE_PASS"
+}
+```
 
+### Task file
+```json
+[
+    {
+        "Topic": "interaction test",
+        "Tasks": [
+            "vim anything.test",
+            "top"
+        ]
+    },
+    {
+        "Topic": "sudo test",
+        "Tasks": [
+            "sudo iftop"
+        ]
+    },
+    {
+        "Topic": "random job",
+        "Tasks": [
+            "cd where",
+            "./doanything.sh parameters"
+        ]
+    }
+]
+```
 # Logistics
 
 ### Contributing
