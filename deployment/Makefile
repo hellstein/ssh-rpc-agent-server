@@ -5,7 +5,6 @@ SDRUNDIR=$(CURDIR)/sshdata.run
 .PHONY: config
 config:
 	cp -rf $(SSHDATA) $(SDRUNDIR)
-	sudo chown -R root:root $(SDRUNDIR)
 	sudo chmod -R 500 $(SDRUNDIR)/*
 	cp $(ENV_TEMP) $(ENV)
 	# add extra env variables
