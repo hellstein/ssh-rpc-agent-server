@@ -1,3 +1,3 @@
 # About project
 
-![Machanism](../images/ssh-rpc-agent.svg)
+![Machanism](../images/machanism.svg)
