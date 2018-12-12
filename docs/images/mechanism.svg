@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="630px" height="313px" viewBox="0 0 630 313" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="116.946181%" y1="100%" x2="-23.0503472%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#78E2AC" offset="0%"></stop>
+            <stop stop-color="#21934F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Artboard-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="630" height="313"></rect>
+        <g id="Group-Copy-3" transform="translate(554.000000, 246.000000)" fill-rule="nonzero">
+            <path d="M50,29 L50,3.08827939 C50,1.93417656 49.0690463,1 47.9223752,1 L3.07762485,1 C1.93095366,1 1,1.93417656 1,3.08827939 L1,29 L50,29 Z" id="Shape-Copy-2" stroke="#303C56" stroke-width="2" fill="#FFFFFF"></path>
+            <path d="M36,44 L15,44 C15,41.7909941 16.567105,40 18.499967,40 L32.4999339,40 C34.432895,39.9998867 36,41.7909941 36,44" id="Shape-Copy-8" fill="#98A3BA"></path>
+            <polygon id="Shape-Copy-9" fill="#525D72" points="32 40 20 40 21.7142718 33 30.2857282 33"></polygon>
+            <path d="M3.07763086,34 C1.37789648,34 0,32.4329874 0,30.4999646 L0,28 L51,28 L51,30.4999646 C51,32.4329874 49.6221035,34 47.9223691,34 L3.07763086,34 Z" id="Shape-Copy-10" fill="#303C56"></path>
+        </g>
+        <g id="Group-Copy-5" transform="translate(554.000000, 140.000000)" fill-rule="nonzero">
+            <path d="M50,29 L50,3.08827939 C50,1.93417656 49.0690463,1 47.9223752,1 L3.07762485,1 C1.93095366,1 1,1.93417656 1,3.08827939 L1,29 L50,29 Z" id="Shape-Copy-2" stroke="#303C56" stroke-width="2" fill="#FFFFFF"></path>
+            <path d="M36,44 L15,44 C15,41.7909941 16.567105,40 18.499967,40 L32.4999339,40 C34.432895,39.9998867 36,41.7909941 36,44" id="Shape-Copy-8" fill="#98A3BA"></path>
+            <polygon id="Shape-Copy-9" fill="#525D72" points="32 40 20 40 21.7142718 33 30.2857282 33"></polygon>
+            <path d="M3.07763086,34 C1.37789648,34 0,32.4329874 0,30.4999646 L0,28 L51,28 L51,30.4999646 C51,32.4329874 49.6221035,34 47.9223691,34 L3.07763086,34 Z" id="Shape-Copy-10" fill="#303C56"></path>
+        </g>
+        <g id="Group-Copy-6" transform="translate(44.000000, 140.000000)" fill-rule="nonzero">
+            <path d="M50,29 L50,3.08827939 C50,1.93417656 49.0690463,1 47.9223752,1 L3.07762485,1 C1.93095366,1 1,1.93417656 1,3.08827939 L1,29 L50,29 Z" id="Shape-Copy-2" stroke="#303C56" stroke-width="2" fill="#FFFFFF"></path>
+            <path d="M36,44 L15,44 C15,41.7909941 16.567105,40 18.499967,40 L32.4999339,40 C34.432895,39.9998867 36,41.7909941 36,44" id="Shape-Copy-8" fill="#98A3BA"></path>
+            <polygon id="Shape-Copy-9" fill="#525D72" points="32 40 20 40 21.7142718 33 30.2857282 33"></polygon>
+            <path d="M3.07763086,34 C1.37789648,34 0,32.4329874 0,30.4999646 L0,28 L51,28 L51,30.4999646 C51,32.4329874 49.6221035,34 47.9223691,34 L3.07763086,34 Z" id="Shape-Copy-10" fill="#303C56"></path>
+        </g>
+        <path id="Line" d="M522.093199,60.9315602 L328.467691,163.383892 L327.583798,163.851583 L326.648417,162.083798 L327.532309,161.616108 L521.157818,59.1637757 L518.351674,53.8604221 L534,53.5 L524.899342,66.2349138 L522.093199,60.9315602 Z" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+        <path id="Line-Copy-3" d="M236.492188,163.5 L119,163.5 L118,163.5 L118,161.5 L119,161.5 L236.492188,161.5 L236.492188,155.5 L250.492188,162.5 L236.492188,169.5 L236.492188,163.5 Z" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+        <path id="Line-Copy" d="M519.770962,163.5 L328,163.5 L327,163.5 L327,161.5 L328,161.5 L519.770962,161.5 L519.770962,155.5 L533.770962,162.5 L519.770962,169.5 L519.770962,163.5 Z" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+        <path id="Line-Copy-2" d="M521.072713,262.033259 L327.54588,163.39094 L326.654939,162.93682 L327.56318,161.154939 L328.45412,161.60906 L521.980954,260.251378 L524.705675,254.905735 L534,267.5 L518.347993,267.378901 L521.072713,262.033259 Z" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+        <g id="Group-3" transform="translate(263.000000, 136.000000)">
+            <rect id="Rectangle" stroke="#303C56" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="48" height="53" rx="8"></rect>
+            <rect id="Rectangle-Copy-4" fill="#303C56" x="23" y="30" width="5" height="5" rx="2.5"></rect>
+            <rect id="Rectangle-Copy" fill="#303C56" x="12" y="10" width="27" height="3" rx="1.5"></rect>
+            <rect id="Rectangle-Copy-3" fill="#303C56" x="12" y="20" width="27" height="3" rx="1.5"></rect>
+        </g>
+        <g id="Group-3-Copy" transform="translate(551.000000, 23.000000)">
+            <rect id="Rectangle" stroke="#303C56" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="48" height="53" rx="8"></rect>
+            <rect id="Rectangle-Copy-4" fill="#303C56" x="23" y="30" width="5" height="5" rx="2.5"></rect>
+            <rect id="Rectangle-Copy" fill="#303C56" x="12" y="10" width="27" height="3" rx="1.5"></rect>
+            <rect id="Rectangle-Copy-3" fill="#303C56" x="12" y="20" width="27" height="3" rx="1.5"></rect>
+        </g>
+        <text id="ssh-rpc-agent-server" font-family="Roboto-Regular, Roboto" font-size="16" font-weight="normal" fill="#16233E">
+            <tspan x="245.441406" y="216">ssh-rpc-agent</tspan>
+            <tspan x="272.109375" y="235">server</tspan>
+        </text>
+        <text id="ssh-rpc-agent-client" font-family="Roboto-Regular, Roboto" font-size="16" font-weight="normal" fill="#16233E">
+            <tspan x="24.4414062" y="216">ssh-rpc-agent</tspan>
+            <tspan x="53.6640625" y="235">client</tspan>
+        </text>
+    </g>
+</svg>
