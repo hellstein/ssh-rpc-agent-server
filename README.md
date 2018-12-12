@@ -121,8 +121,8 @@ There are 3 credential ssh mode as following,
 ```
 
 # TODO
-* Gitbook for the project
-* Video and gif for the project
+* ~~Gitbook for the project~~
+* ~~Video for the project~~
 * Unit test
 * Web UI
 
