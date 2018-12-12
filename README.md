@@ -20,8 +20,8 @@ armv6: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/ssh-rpc-ag
 
 ### Get release and unzip
 ```
-wget https://github.com/hellstein/ssh-rpc-agent/releases/download/0.1.7/ssh-rpc-agent-0.1.7.zip
-unzip ssh-rpc-agent-0.1.7.zip
+wget https://github.com/hellstein/ssh-rpc-agent/releases/download/0.1.8/ssh-rpc-agent-0.1.8.zip
+unzip ssh-rpc-agent-0.1.8.zip
 ```
 
 ### Start the service
