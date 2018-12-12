@@ -1,3 +1,3 @@
 # About project
 
-![Machanism](../images/machanism.svg)
+![Mechanism](../images/mechanism.svg)
