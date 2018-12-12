@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="250" src="LOGO">
+  <img src="./gitbook/images/mechanism.svg">
 </p>
 
 <h1 align="center"> ssh-rpc-agent </h1>
