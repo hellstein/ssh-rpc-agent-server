@@ -17,8 +17,9 @@
 * [How to create machine ?](usage/usermanual/CreateMachine.md)
 
 ### Developer guide
-* [How to build locally](usage/devguide/LocalBuild.md)
-* [How to CI build](usage/devguide/CIBuild.md)
+* [How to start ?](usage/devguide/HowToStart.md)
+* [How to build locally ?](usage/devguide/LocalBuild.md)
+* [How to build with CI ?](usage/devguide/CIBuild.md)
 * [Server design](usage/devguide/Server.md)
 * [Client design](usage/devguide/Client.md)
 

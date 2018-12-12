@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>How to build with CI ? · GitBook</title>
+        <title>How to start ? · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Server.html" />
+    <link rel="next" href="LocalBuild.html" />
     
     
-    <link rel="prev" href="LocalBuild.html" />
+    <link rel="prev" href="../usermanual/CreateMachine.html" />
     
 
     </head>
@@ -234,7 +234,7 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="HowToStart.html">
+        <li class="chapter active" data-level="5.1" data-path="HowToStart.html">
             
                 <a href="HowToStart.html">
             
@@ -260,7 +260,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.3" data-path="CIBuild.html">
+        <li class="chapter " data-level="5.3" data-path="CIBuild.html">
             
                 <a href="CIBuild.html">
             
@@ -402,7 +402,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >How to build with CI ?</a>
+        <a href="../.." >How to start ?</a>
     </h1>
 </div>
 
@@ -417,7 +417,39 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="how-to-build-with-ci-">How to build with CI ?</h1>
+                                <h1 id="how-to-start-">How to start ?</h1>
+<ul>
+<li>Currently, the server and client of <code>ssh-rpc-agent</code> are developed in this repository. </li>
+<li>Server is written in <code>golang</code>.</li>
+<li>Client is written in <code>nodejs</code>.</li>
+</ul>
+<h3 id="set-up-your-golang-development-environment">Set up your golang development environment</h3>
+<p>As you may have known, golang package management is some kind of different from js, python and other OO programming languages. You should check <a href="https://golang.org/doc/install" target="_blank">how to set up the golang environment</a> if you have no experience with it. </p>
+<h3 id="get-project">Get project</h3>
+<pre><code># under your golang working space 
+go get -v github.com/hellstein/ssh-rpc-agent
+</code></pre><h3 id="build-server">Build server</h3>
+<pre><code>go build
+</code></pre><p>You will see a binary file called <code>ssh-rpc-agent</code> generated.</p>
+<h3 id="start-server">Start server</h3>
+<p>Start server by excuting <code>./ssh-rpc-agent</code>. Server is listening on port <code>8900</code> by default.</p>
+<h3 id="run-client">Run client</h3>
+<ul>
+<li><p>Go to client env</p>
+<pre><code>cd wsclient
+</code></pre></li>
+<li><p>Install nodejs dependencies</p>
+<pre><code>npm install
+</code></pre></li>
+<li><p>Modify task and machine files</p>
+<pre><code>vim example/machine-[CREDENTIAL_MODE].json
+vim example/tasks.json
+</code></pre><p><code>CREDENTIAL_MODE</code> could one of three, <code>userpass</code>, <code>sshkey</code>, <code>sshkeywithpass</code>.</p>
+</li>
+<li><p>Test by running a job</p>
+<pre><code>./test.sh [CREDENTIAL_MODE]
+</code></pre></li>
+</ul>
 
                                 
                                 </section>
@@ -445,12 +477,12 @@
 
             
                 
-                <a href="LocalBuild.html" class="navigation navigation-prev " aria-label="Previous page: How to build locally ?">
+                <a href="../usermanual/CreateMachine.html" class="navigation navigation-prev " aria-label="Previous page: How to create machine ?">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="Server.html" class="navigation navigation-next " aria-label="Next page: Server design">
+                <a href="LocalBuild.html" class="navigation navigation-next " aria-label="Next page: How to build locally ?">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -461,7 +493,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to build with CI ?","level":"5.3","depth":1,"next":{"title":"Server design","level":"5.4","depth":1,"path":"usage/devguide/Server.md","ref":"usage/devguide/Server.md","articles":[]},"previous":{"title":"How to build locally ?","level":"5.2","depth":1,"path":"usage/devguide/LocalBuild.md","ref":"usage/devguide/LocalBuild.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/devguide/CIBuild.md","mtime":"2018-12-12T09:28:24.223Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-12T12:32:41.139Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to start ?","level":"5.1","depth":1,"next":{"title":"How to build locally ?","level":"5.2","depth":1,"path":"usage/devguide/LocalBuild.md","ref":"usage/devguide/LocalBuild.md","articles":[]},"previous":{"title":"How to create machine ?","level":"4.2","depth":1,"path":"usage/usermanual/CreateMachine.md","ref":"usage/usermanual/CreateMachine.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/devguide/HowToStart.md","mtime":"2018-12-12T11:55:15.530Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-12T12:32:41.139Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

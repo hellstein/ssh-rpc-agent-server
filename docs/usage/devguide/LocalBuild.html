@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>How to build locally · GitBook</title>
+        <title>How to build locally ? · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -60,7 +60,7 @@
     <link rel="next" href="CIBuild.html" />
     
     
-    <link rel="prev" href="../usermanual/CreateMachine.html" />
+    <link rel="prev" href="HowToStart.html" />
     
 
     </head>
@@ -234,12 +234,25 @@
         
         
     
-        <li class="chapter active" data-level="5.1" data-path="LocalBuild.html">
+        <li class="chapter " data-level="5.1" data-path="HowToStart.html">
+            
+                <a href="HowToStart.html">
+            
+                    
+                    How to start ?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.2" data-path="LocalBuild.html">
             
                 <a href="LocalBuild.html">
             
                     
-                    How to build locally
+                    How to build locally ?
             
                 </a>
             
@@ -247,12 +260,12 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="CIBuild.html">
+        <li class="chapter " data-level="5.3" data-path="CIBuild.html">
             
                 <a href="CIBuild.html">
             
                     
-                    How to CI build
+                    How to build with CI ?
             
                 </a>
             
@@ -260,7 +273,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="Server.html">
+        <li class="chapter " data-level="5.4" data-path="Server.html">
             
                 <a href="Server.html">
             
@@ -273,7 +286,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.4" data-path="Client.html">
+        <li class="chapter " data-level="5.5" data-path="Client.html">
             
                 <a href="Client.html">
             
@@ -389,7 +402,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >How to build locally</a>
+        <a href="../.." >How to build locally ?</a>
     </h1>
 </div>
 
@@ -405,6 +418,25 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="how-to-build-locally-">How to build locally ?</h1>
+<h3 id="build-server-docker-image">Build server docker image</h3>
+<pre><code>make mk-image
+</code></pre><h3 id="build-deployment-zip">Build deployment zip</h3>
+<pre><code>make mk-deployment VERSION=latest
+</code></pre><p><strong>Notice</strong>: Since the process of building image without exposing parameter version, the image version would be <code>latest</code> during local building process. To avoid from inconsistency, please use <code>VERSION=latest</code> when building deployment zip. CI building has no such problem, and we will fix this ASAP.</p>
+<p>You will see <code>ssh-rpc-agent-latest.zip</code> generated.</p>
+<h3 id="start-server-and-run-job-from-client">Start server, and run job from client</h3>
+<ul>
+<li><p>Create test folder</p>
+<pre><code>mkdir ~/testenv
+mv ssh-rpc-agent-latest.zip ~/testenv
+cd ~/testenv
+unzip ssh-rpc-agent-latest.zip
+</code></pre><p>The unzipped folder is <code>agent</code></p>
+</li>
+<li><p>Start server and run job from client
+Please refer to <a href="../quickstart/InstallServer.html">Quick start server</a> and <a href="../quickstart/RunJob.html">Quick start job</a></p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -432,12 +464,12 @@
 
             
                 
-                <a href="../usermanual/CreateMachine.html" class="navigation navigation-prev " aria-label="Previous page: How to create machine ?">
+                <a href="HowToStart.html" class="navigation navigation-prev " aria-label="Previous page: How to start ?">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="CIBuild.html" class="navigation navigation-next " aria-label="Next page: How to CI build">
+                <a href="CIBuild.html" class="navigation navigation-next " aria-label="Next page: How to build with CI ?">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -448,7 +480,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to build locally","level":"5.1","depth":1,"next":{"title":"How to CI build","level":"5.2","depth":1,"path":"usage/devguide/CIBuild.md","ref":"usage/devguide/CIBuild.md","articles":[]},"previous":{"title":"How to create machine ?","level":"4.2","depth":1,"path":"usage/usermanual/CreateMachine.md","ref":"usage/usermanual/CreateMachine.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/devguide/LocalBuild.md","mtime":"2018-12-12T09:28:24.223Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-12T10:21:49.614Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to build locally ?","level":"5.2","depth":1,"next":{"title":"How to build with CI ?","level":"5.3","depth":1,"path":"usage/devguide/CIBuild.md","ref":"usage/devguide/CIBuild.md","articles":[]},"previous":{"title":"How to start ?","level":"5.1","depth":1,"path":"usage/devguide/HowToStart.md","ref":"usage/devguide/HowToStart.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/devguide/LocalBuild.md","mtime":"2018-12-12T12:31:45.401Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-12T12:32:41.139Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
