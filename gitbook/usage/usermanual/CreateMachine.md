@@ -19,7 +19,7 @@ There are 3 credential ssh mode as following,
 {
     "domain": "12.34.56.78",
     "port": "22",
-    "username": "dorry",
+    "username": "ubuntu",
     "mode": "SSHKEYWITHPASSPHRASE",
     "credential": {
         "sshkeyfile": "/credential/REPLACE_PATH/REPLACE_PRIVATE.KEY",

@@ -16,20 +16,20 @@ armv6: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/ssh-rpc-ag
 ![Travis (.org) branch](https://img.shields.io/travis/hellstein/ssh-rpc-agent/master.svg)
 ![GitHub](https://img.shields.io/github/license/hellstein/ssh-rpc-agent.svg)
 
-# Quick started 
+# [Quick started](https://hellstein.github.io/ssh-rpc-agent/usage/quickstart/Video.html)
 
 ### Get release and unzip
 ```
-wget https://github.com/hellstein/ssh-rpc-agent/releases/download/0.1.8/ssh-rpc-agent-0.1.8.zip
-unzip ssh-rpc-agent-0.1.8.zip
+wget https://github.com/hellstein/ssh-rpc-agent/releases/download/0.1.11/ssh-rpc-agent-0.1.11.zip
+unzip ssh-rpc-agent-0.1.11.zip
 ```
 
 ### Start the service
 ```
 cd agent/imageAPI
-make config SSHDATA=[SSH CONFIG DIR] NAME=sra
-make start NAME=sra
+make install SSHDATA=[SSH CONFIG DIR]
 ```
+in which `SSHDATA` is a directory storing private keys.
 
 ### Run ssh-rpc-agent jobs
 
@@ -61,7 +61,7 @@ There are 3 credential ssh mode as following,
     "username": "ubuntu",
     "mode": "SSHKEY",
     "credential": {
-        "sshkeyfile": "/etc/ssh/conf.d/REPLACE_PATH/REPLACE_PRIVATE.KEY"
+        "sshkeyfile": "/credential/REPLACE_PATH/REPLACE_PRIVATE.KEY"
     },
     "sudopassword": "REPLACE_PASS"
 }
@@ -71,10 +71,10 @@ There are 3 credential ssh mode as following,
 {
     "domain": "12.34.56.78",
     "port": "22",
-    "username": "dorry",
+    "username": "ubuntu",
     "mode": "SSHKEYWITHPASSPHRASE",
     "credential": {
-        "sshkeyfile": "/etc/ssh/conf.d/REPLACE_PATH/REPLACE_PRIVATE.KEY",
+        "sshkeyfile": "/credential/REPLACE_PATH/REPLACE_PRIVATE.KEY",
         "passphrase": "REPLACE_SCRETE"
     },
     "sudopassword": "REPLACE_PASS"

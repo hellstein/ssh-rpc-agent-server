@@ -11,6 +11,7 @@ unzip ssh-rpc-agent-0.1.8.zip
 cd agent/imageAPI
 make install SSHDATA=[SSH CONFIG DIR]
 ```
+in which `SSHDATA` is a directory storing private keys.
 
 ### Check the service status
 ```
