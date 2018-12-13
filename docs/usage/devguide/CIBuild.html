@@ -94,7 +94,7 @@
                 <a href="../../">
             
                     
-                    Introduction ssh-rpc-agent-0.1.8
+                    Introduction ssh-rpc-agent-0.1.11
             
                 </a>
             
@@ -418,6 +418,18 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="how-to-build-with-ci-">How to build with CI ?</h1>
+<ul>
+<li><p>Tag with release version</p>
+<pre><code>git tag 0.0.1
+git push origin 0.0.1
+</code></pre></li>
+<li><p>Travis CI will build image and deployment zip with version you specified by tagging, e.g, <code>0.0.1</code> in our case.</p>
+</li>
+<li><p>Check the <a href="https://github.com/hellstein/ssh-rpc-agent/releases" target="_blank">release page</a></p>
+</li>
+<li><p>Check the <a href="https://hub.docker.com/r/hellstein/ssh-rpc-agent-x86/tags/" target="_blank">Docker hub</a></p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -461,7 +473,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to build with CI ?","level":"5.3","depth":1,"next":{"title":"Server design","level":"5.4","depth":1,"path":"usage/devguide/Server.md","ref":"usage/devguide/Server.md","articles":[]},"previous":{"title":"How to build locally ?","level":"5.2","depth":1,"path":"usage/devguide/LocalBuild.md","ref":"usage/devguide/LocalBuild.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/devguide/CIBuild.md","mtime":"2018-12-12T09:28:24.223Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T03:07:04.487Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to build with CI ?","level":"5.3","depth":1,"next":{"title":"Server design","level":"5.4","depth":1,"path":"usage/devguide/Server.md","ref":"usage/devguide/Server.md","articles":[]},"previous":{"title":"How to build locally ?","level":"5.2","depth":1,"path":"usage/devguide/LocalBuild.md","ref":"usage/devguide/LocalBuild.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/devguide/CIBuild.md","mtime":"2018-12-13T03:24:35.095Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T03:25:18.319Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
