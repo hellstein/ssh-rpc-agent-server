@@ -2,26 +2,34 @@
 
 ### Build server docker image
 ```
-make mk-image
+make mk-image ARCH=x86
+```
+
+Docker image `hellstein/ssh-rpc-agent:test` will be generated, which can be seen by `docker images`.
+
+You also can build server docker images by
+```
+make mk-image ARCH=x86 VERSION=0.0.1
 ```
 
 ### Build deployment zip
 ```
-make mk-deployment VERSION=latest
+make mk-deployment
 ```
 
-__Notice__: Since the process of building image without exposing parameter version, the image version would be `latest` during local building process. To avoid from inconsistency, please use `VERSION=latest` when building deployment zip. CI building has no such problem, and we will fix this ASAP.
+You will see `ssh-rpc-agent-test.zip` generated. You also can build zip by
+```
+make mk-deployment VERSION=0.0.1
+```
 
-You will see `ssh-rpc-agent-latest.zip` generated.
- 
 ### Start server, and run job from client
 
 * Create test folder
 ```
 mkdir ~/testenv
-mv ssh-rpc-agent-latest.zip ~/testenv
+mv ssh-rpc-agent-test.zip ~/testenv
 cd ~/testenv
-unzip ssh-rpc-agent-latest.zip
+unzip ssh-rpc-agent-test.zip
 ```
 The unzipped folder is `agent`
 

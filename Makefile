@@ -6,6 +6,7 @@ DEPLOYMENT = $(CURDIR)/deployment
 WSCLIENT = $(CURDIR)/wsclient
 OWNER = hellstein
 REPO = ssh-rpc-agent
+VERSION = test
 
 .PHONY: mk-book clean-book
 mk-book: $(GITBOOK)
@@ -21,11 +22,11 @@ mk-image:
 	go get -v github.com/gorilla/websocket
 	CGO_ENABLED=0 go build -o image/ssh-rpc-agent
 	docker run --rm --privileged multiarch/qemu-user-static:register --reset
-	docker build -t $(OWNER)/$(REPO)-$(ARCH) -f $(DF)-$(ARCH) $(IMAGE_ENV) 
+	docker build -t $(OWNER)/$(REPO)-$(ARCH):$(VERSION) -f $(DF)-$(ARCH) $(IMAGE_ENV) 
 
 clean-image:
 	rm image/ssh-rpc-agent
-	docker rmi $(OWNER)/$(REPO)-$(ARCH)
+	docker rmi $(OWNER)/$(REPO)-$(ARCH):$(VERSION)
 
 
 .PHONY: mk-deployment clean-deployment
@@ -44,6 +45,5 @@ clean-deployment: $(REPO)-$(VERSION).zip
 
 .PHONY: pushtohub
 pushtohub:
-	docker tag $(OWNER)/$(REPO)-$(ARCH) $(OWNER)/$(REPO)-$(ARCH):$(TAG)
 	docker login -u $(USER) -p $(PASS)
-	docker push $(OWNER)/$(REPO)-$(ARCH):$(TAG)
+	docker push $(OWNER)/$(REPO)-$(ARCH):$(VERSION)

@@ -419,18 +419,21 @@
                                 
                                 <h1 id="how-to-build-locally-">How to build locally ?</h1>
 <h3 id="build-server-docker-image">Build server docker image</h3>
-<pre><code>make mk-image
+<pre><code>make mk-image ARCH=x86
+</code></pre><p>Docker image <code>hellstein/ssh-rpc-agent:test</code> will be generated, which can be seen by <code>docker images</code>.</p>
+<p>You also can build server docker images by</p>
+<pre><code>make mk-image ARCH=x86 VERSION=0.0.1
 </code></pre><h3 id="build-deployment-zip">Build deployment zip</h3>
-<pre><code>make mk-deployment VERSION=latest
-</code></pre><p><strong>Notice</strong>: Since the process of building image without exposing parameter version, the image version would be <code>latest</code> during local building process. To avoid from inconsistency, please use <code>VERSION=latest</code> when building deployment zip. CI building has no such problem, and we will fix this ASAP.</p>
-<p>You will see <code>ssh-rpc-agent-latest.zip</code> generated.</p>
-<h3 id="start-server-and-run-job-from-client">Start server, and run job from client</h3>
+<pre><code>make mk-deployment
+</code></pre><p>You will see <code>ssh-rpc-agent-test.zip</code> generated. You also can build zip by</p>
+<pre><code>make mk-deployment VERSION=0.0.1
+</code></pre><h3 id="start-server-and-run-job-from-client">Start server, and run job from client</h3>
 <ul>
 <li><p>Create test folder</p>
 <pre><code>mkdir ~/testenv
-mv ssh-rpc-agent-latest.zip ~/testenv
+mv ssh-rpc-agent-test.zip ~/testenv
 cd ~/testenv
-unzip ssh-rpc-agent-latest.zip
+unzip ssh-rpc-agent-test.zip
 </code></pre><p>The unzipped folder is <code>agent</code></p>
 </li>
 <li><p>Start server and run job from client
@@ -480,7 +483,7 @@ Please refer to <a href="../quickstart/InstallServer.html">Quick start server</a
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to build locally ?","level":"5.2","depth":1,"next":{"title":"How to build with CI ?","level":"5.3","depth":1,"path":"usage/devguide/CIBuild.md","ref":"usage/devguide/CIBuild.md","articles":[]},"previous":{"title":"How to start ?","level":"5.1","depth":1,"path":"usage/devguide/HowToStart.md","ref":"usage/devguide/HowToStart.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/devguide/LocalBuild.md","mtime":"2018-12-12T12:31:45.401Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-12T12:32:41.139Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to build locally ?","level":"5.2","depth":1,"next":{"title":"How to build with CI ?","level":"5.3","depth":1,"path":"usage/devguide/CIBuild.md","ref":"usage/devguide/CIBuild.md","articles":[]},"previous":{"title":"How to start ?","level":"5.1","depth":1,"path":"usage/devguide/HowToStart.md","ref":"usage/devguide/HowToStart.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/devguide/LocalBuild.md","mtime":"2018-12-13T01:46:38.372Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T01:46:54.650Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
