@@ -8,4 +8,4 @@ services:
     user: root
     restart: unless-stopped
     volumes:
-      - ${SSHRUNDATA}:/etc/ssh
+      - ${SSHRUNDATA}:/credential

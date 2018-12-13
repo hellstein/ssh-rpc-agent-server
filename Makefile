@@ -7,6 +7,7 @@ WSCLIENT = $(CURDIR)/wsclient
 OWNER = hellstein
 REPO = ssh-rpc-agent
 VERSION = test
+ARCH = x86
 
 .PHONY: mk-book clean-book
 mk-book: $(GITBOOK)

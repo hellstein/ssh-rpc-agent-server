@@ -426,7 +426,7 @@
   <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;ubuntu&quot;</span>,
   <span class="hljs-string">&quot;mode&quot;</span>: <span class="hljs-string">&quot;SSHKEY&quot;</span>,
   <span class="hljs-string">&quot;credential&quot;</span>: {
-      <span class="hljs-string">&quot;sshkeyfile&quot;</span>: <span class="hljs-string">&quot;/etc/ssh/conf.d/REPLACE_PATH/REPLACE_PRIVATE.KEY&quot;</span>
+      <span class="hljs-string">&quot;sshkeyfile&quot;</span>: <span class="hljs-string">&quot;/credential/REPLACE_PATH/REPLACE_PRIVATE.KEY&quot;</span>
   },
   <span class="hljs-string">&quot;sudopassword&quot;</span>: <span class="hljs-string">&quot;REPLACE_PASS&quot;</span>
 }
@@ -438,7 +438,7 @@
   <span class="hljs-string">&quot;username&quot;</span>: <span class="hljs-string">&quot;dorry&quot;</span>,
   <span class="hljs-string">&quot;mode&quot;</span>: <span class="hljs-string">&quot;SSHKEYWITHPASSPHRASE&quot;</span>,
   <span class="hljs-string">&quot;credential&quot;</span>: {
-      <span class="hljs-string">&quot;sshkeyfile&quot;</span>: <span class="hljs-string">&quot;/etc/ssh/conf.d/REPLACE_PATH/REPLACE_PRIVATE.KEY&quot;</span>,
+      <span class="hljs-string">&quot;sshkeyfile&quot;</span>: <span class="hljs-string">&quot;/credential/REPLACE_PATH/REPLACE_PRIVATE.KEY&quot;</span>,
       <span class="hljs-string">&quot;passphrase&quot;</span>: <span class="hljs-string">&quot;REPLACE_SCRETE&quot;</span>
   },
   <span class="hljs-string">&quot;sudopassword&quot;</span>: <span class="hljs-string">&quot;REPLACE_PASS&quot;</span>
@@ -457,6 +457,11 @@
 }
 </code></pre>
 </li>
+</ul>
+<p><strong>Notice</strong>:</p>
+<ul>
+<li><code>REPLACE_PATH/REPLACE_PRIVATE.KEY</code> should be replaced by the <code>SSHDATA</code> structure used during installation. e.g, <code>SSHDATA</code> has inner path <code>myvps/thekey</code>, therefore, the <code>sshkeyfile</code> should be modified as <code>/credential/myvps/thekey</code>.</li>
+<li>Except value of <code>mode</code> should <strong>NOT</strong> be modified, you can replace value of other attributes.</li>
 </ul>
 
                                 
@@ -501,7 +506,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to create machine ?","level":"4.2","depth":1,"next":{"title":"How to start ?","level":"5.1","depth":1,"path":"usage/devguide/HowToStart.md","ref":"usage/devguide/HowToStart.md","articles":[]},"previous":{"title":"How to create tasks ?","level":"4.1","depth":1,"path":"usage/usermanual/CreateTask.md","ref":"usage/usermanual/CreateTask.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/usermanual/CreateMachine.md","mtime":"2018-12-12T09:28:24.223Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T02:26:43.226Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to create machine ?","level":"4.2","depth":1,"next":{"title":"How to start ?","level":"5.1","depth":1,"path":"usage/devguide/HowToStart.md","ref":"usage/devguide/HowToStart.md","articles":[]},"previous":{"title":"How to create tasks ?","level":"4.1","depth":1,"path":"usage/usermanual/CreateTask.md","ref":"usage/usermanual/CreateTask.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/usermanual/CreateMachine.md","mtime":"2018-12-13T02:57:44.912Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T02:57:49.878Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

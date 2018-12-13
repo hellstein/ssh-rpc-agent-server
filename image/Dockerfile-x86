@@ -4,6 +4,7 @@ RUN apk update && \
 apk upgrade && \
 apk add bash openssh vim sshpass
 
+RUN mkdir /credential
 COPY ssh-rpc-agent ./
 
 

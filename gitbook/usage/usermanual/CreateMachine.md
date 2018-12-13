@@ -9,7 +9,7 @@ There are 3 credential ssh mode as following,
     "username": "ubuntu",
     "mode": "SSHKEY",
     "credential": {
-        "sshkeyfile": "/etc/ssh/conf.d/REPLACE_PATH/REPLACE_PRIVATE.KEY"
+        "sshkeyfile": "/credential/REPLACE_PATH/REPLACE_PRIVATE.KEY"
     },
     "sudopassword": "REPLACE_PASS"
 }
@@ -22,7 +22,7 @@ There are 3 credential ssh mode as following,
     "username": "dorry",
     "mode": "SSHKEYWITHPASSPHRASE",
     "credential": {
-        "sshkeyfile": "/etc/ssh/conf.d/REPLACE_PATH/REPLACE_PRIVATE.KEY",
+        "sshkeyfile": "/credential/REPLACE_PATH/REPLACE_PRIVATE.KEY",
         "passphrase": "REPLACE_SCRETE"
     },
     "sudopassword": "REPLACE_PASS"
@@ -42,4 +42,6 @@ There are 3 credential ssh mode as following,
 }
 ```
 
-
+__Notice__:
+* `REPLACE_PATH/REPLACE_PRIVATE.KEY` should be replaced by the `SSHDATA` structure used during installation. e.g, `SSHDATA` has inner path `myvps/thekey`, therefore, the `sshkeyfile` should be modified as `/credential/myvps/thekey`.
+* Except value of `mode` should __NOT__ be modified, you can replace value of other attributes.

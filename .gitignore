@@ -4,3 +4,4 @@ sshdata*
 deployment/compose
 node_modules
 *.bk
+machine-test.json
