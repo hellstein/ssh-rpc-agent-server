@@ -423,10 +423,15 @@
 unzip ssh-rpc-agent-0.1.8.zip
 </code></pre><h3 id="start-the-service">Start the service</h3>
 <pre><code>cd agent/imageAPI
-make config SSHDATA=[SSH CONFIG DIR] NAME=sra
-make start NAME=sra
-</code></pre><p><strong>Notice: <code>NAME</code> is used for identifying the ssh-rpc-agent, which implies that you can start mutiple ssh-rpc-agent servers.</strong></p>
-
+make install SSHDATA=[SSH CONFIG DIR]
+</code></pre><h3 id="check-the-service-status">Check the service status</h3>
+<pre><code>make status
+</code></pre><p>The service will listen on <code>8900</code> by default. </p>
+<h3 id="start-the-service-on-another-port">Start the service on another port</h3>
+<p>You also can config the listening port during installation by</p>
+<pre><code>make install SSHDATA=[SSH CONFIG DIR] PORT=8700
+make status
+</code></pre>
                                 
                                 </section>
                             
@@ -469,7 +474,7 @@ make start NAME=sra
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Install server","level":"3.2","depth":1,"next":{"title":"Run job","level":"3.3","depth":1,"path":"usage/quickstart/RunJob.md","ref":"usage/quickstart/RunJob.md","articles":[]},"previous":{"title":"Let's start","level":"3.1","depth":1,"path":"usage/quickstart/Video.md","ref":"usage/quickstart/Video.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/quickstart/InstallServer.md","mtime":"2018-12-12T09:28:24.223Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T01:46:54.650Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Install server","level":"3.2","depth":1,"next":{"title":"Run job","level":"3.3","depth":1,"path":"usage/quickstart/RunJob.md","ref":"usage/quickstart/RunJob.md","articles":[]},"previous":{"title":"Let's start","level":"3.1","depth":1,"path":"usage/quickstart/Video.md","ref":"usage/quickstart/Video.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/quickstart/InstallServer.md","mtime":"2018-12-13T02:22:59.619Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T02:26:43.226Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

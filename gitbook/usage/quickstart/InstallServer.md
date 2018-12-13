@@ -9,11 +9,18 @@ unzip ssh-rpc-agent-0.1.8.zip
 ### Start the service
 ```
 cd agent/imageAPI
-make config SSHDATA=[SSH CONFIG DIR] NAME=sra
-make start NAME=sra
+make install SSHDATA=[SSH CONFIG DIR]
 ```
 
-__Notice: `NAME` is used for identifying the ssh-rpc-agent, which implies that you can start mutiple ssh-rpc-agent servers.__
+### Check the service status
+```
+make status
+```
+The service will listen on `8900` by default. 
 
-
-
+### Start the service on another port
+You also can config the listening port during installation by
+```
+make install SSHDATA=[SSH CONFIG DIR] PORT=8700
+make status
+``` 
