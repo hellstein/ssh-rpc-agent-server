@@ -16,7 +16,7 @@ armv6: [![Docker Pulls](https://img.shields.io/docker/pulls/hellstein/ssh-rpc-ag
 ![Travis (.org) branch](https://img.shields.io/travis/hellstein/ssh-rpc-agent/master.svg)
 ![GitHub](https://img.shields.io/github/license/hellstein/ssh-rpc-agent.svg)
 
-# [Quick started](https://hellstein.github.io/ssh-rpc-agent/usage/quickstart/Video.html)
+# [Quick start](https://hellstein.github.io/ssh-rpc-agent/usage/quickstart/Video.html)
 
 ### Get release and unzip
 ```

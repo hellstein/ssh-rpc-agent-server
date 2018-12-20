@@ -20,7 +20,7 @@ go build
 You will see a binary file called `ssh-rpc-agent` generated.
 
 ### Start server 
-Start server by excuting `./ssh-rpc-agent`. Server is listening on port `8900` by default.
+Start server by executing `./ssh-rpc-agent`. Server is listening on port `8900` by default.
 
 ### Run client
 * Go to client env
