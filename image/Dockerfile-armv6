@@ -1,3 +1,0 @@
-FROM elespejo/armv6-x86-alpine-base 
-
-CMD /bin/bash

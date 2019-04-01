@@ -2,7 +2,7 @@ package main
 
 import (
     "github.com/gorilla/mux"
-    "github.com/hellstein/ssh-rpc-agent/jobmgr"
+    "github.com/hellstein/ssh-rpc-agent-server/jobmgr"
 )
 
 func CreateRouter(mgr jobmgr.I_Mgr) *mux.Router {

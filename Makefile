@@ -3,11 +3,9 @@ DOCS = $(CURDIR)/docs
 IMAGE_ENV = $(CURDIR)/image
 DF = $(IMAGE_ENV)/Dockerfile
 DEPLOYMENT = $(CURDIR)/deployment
-WSCLIENT = $(CURDIR)/wsclient
 OWNER = hellstein
-REPO = ssh-rpc-agent
+REPO = ssh-rpc-agent-server
 VERSION = test
-ARCH = x86
 
 .PHONY: mk-book clean-book
 mk-book: $(GITBOOK)
@@ -21,24 +19,22 @@ mk-image:
 	go get -v github.com/gorilla/mux 
 	go get -v golang.org/x/crypto/ssh
 	go get -v github.com/gorilla/websocket
-	CGO_ENABLED=0 go build -o image/ssh-rpc-agent
+	CGO_ENABLED=0 go build -o image/$(REPO)
 	docker run --rm --privileged multiarch/qemu-user-static:register --reset
-	docker build -t $(OWNER)/$(REPO)-$(ARCH):$(VERSION) -f $(DF)-$(ARCH) $(IMAGE_ENV) 
+	docker build -t $(OWNER)/$(REPO):$(VERSION) -f $(DF) $(IMAGE_ENV) 
 
 clean-image:
 	rm image/ssh-rpc-agent
-	docker rmi $(OWNER)/$(REPO)-$(ARCH):$(VERSION)
+	docker rmi $(OWNER)/$(REPO):$(VERSION)
 
 
 .PHONY: mk-deployment clean-deployment
-mk-deployment: $(DEPLOYMENT) $(WSCLIENT)
+mk-deployment: $(DEPLOYMENT)
 	sed -i s+VERSION=.*+VERSION=$(VERSION)+g $(DEPLOYMENT)/temp.env
-	mkdir -p agent/imageAPI agent/wsClient
-	cp $(DEPLOYMENT)/docker-compose.yml $(DEPLOYMENT)/temp.env $(DEPLOYMENT)/Makefile agent/imageAPI/
-	cp $(WSCLIENT)/client.js $(WSCLIENT)/msg.js $(WSCLIENT)/package.json $(WSCLIENT)/package-lock.json agent/wsClient/
-	cp -r $(WSCLIENT)/example agent/wsClient/
-	zip -r $(REPO)-$(VERSION).zip agent
-	rm -rf agent
+	mkdir -p sra-server/
+	cp $(DEPLOYMENT)/docker-compose.yml $(DEPLOYMENT)/temp.env $(DEPLOYMENT)/Makefile sra-server/
+	zip -r $(REPO)-$(VERSION).zip sra-server
+	rm -rf sra-server
 
 clean-deployment: $(REPO)-$(VERSION).zip
 	rm $(REPO)-$(VERSION).zip
@@ -47,4 +43,4 @@ clean-deployment: $(REPO)-$(VERSION).zip
 .PHONY: pushtohub
 pushtohub:
 	docker login -u $(USER) -p $(PASS)
-	docker push $(OWNER)/$(REPO)-$(ARCH):$(VERSION)
+	docker push $(OWNER)/$(REPO):$(VERSION)

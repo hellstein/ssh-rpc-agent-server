@@ -2,7 +2,7 @@ package main
 import (
     "log"
     "net/http"
-    "github.com/hellstein/ssh-rpc-agent/jobmgr"
+    "github.com/hellstein/ssh-rpc-agent-server/jobmgr"
 )
 
 func main() {

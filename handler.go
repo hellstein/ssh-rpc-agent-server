@@ -4,7 +4,7 @@ import (
 //    "fmt"
     "net/http"
     "log"
-    "github.com/hellstein/ssh-rpc-agent/jobmgr"
+    "github.com/hellstein/ssh-rpc-agent-server/jobmgr"
     "github.com/gorilla/websocket"
 )
 
