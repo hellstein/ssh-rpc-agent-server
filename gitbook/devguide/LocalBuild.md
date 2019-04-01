@@ -2,14 +2,14 @@
 
 ### Build server docker image
 ```
-make mk-image ARCH=x86
+make mk-image
 ```
 
-Docker image `hellstein/ssh-rpc-agent:test` will be generated, which can be seen by `docker images`.
+Docker image `hellstein/ssh-rpc-agent-server:test` will be generated, which can be seen by `docker images`.
 
 You also can build server docker images by
 ```
-make mk-image ARCH=x86 VERSION=0.0.1
+make mk-image VERSION=0.0.1
 ```
 
 ### Build deployment zip
@@ -17,7 +17,7 @@ make mk-image ARCH=x86 VERSION=0.0.1
 make mk-deployment
 ```
 
-You will see `ssh-rpc-agent-test.zip` generated. You also can build zip by
+You will see `ssh-rpc-agent-server-test.zip` generated. You also can build zip by
 ```
 make mk-deployment VERSION=0.0.1
 ```
@@ -27,11 +27,11 @@ make mk-deployment VERSION=0.0.1
 * Create test folder
 ```
 mkdir ~/testenv
-mv ssh-rpc-agent-test.zip ~/testenv
+mv ssh-rpc-agent-server-test.zip ~/testenv
 cd ~/testenv
-unzip ssh-rpc-agent-test.zip
+unzip ssh-rpc-agent-server-test.zip
 ```
-The unzipped folder is `agent`
+The unzipped folder is `sra-server`
 
 * Start server and run job from client
 Please refer to [Quick start server](../quickstart/InstallServer.md) and [Quick start job](../quickstart/RunJob.md)

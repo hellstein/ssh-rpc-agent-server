@@ -33,6 +33,7 @@ mk-deployment: $(DEPLOYMENT)
 	sed -i s+VERSION=.*+VERSION=$(VERSION)+g $(DEPLOYMENT)/temp.env
 	mkdir -p sra-server/
 	cp $(DEPLOYMENT)/docker-compose.yml $(DEPLOYMENT)/temp.env $(DEPLOYMENT)/Makefile sra-server/
+	cp -r wsclient sra-server/
 	zip -r $(REPO)-$(VERSION).zip sra-server
 	rm -rf sra-server
 

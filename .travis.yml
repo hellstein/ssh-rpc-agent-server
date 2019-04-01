@@ -4,8 +4,6 @@ go:
 sudo: required
 dist: trusty
 env:
-  matrix:
-  - ARCH=x86
   global:
   - secure: jswZDDySa7Nsp07+bBenIYjN84tSVh9CgUq+P49VNRvZEbw3Q3YBljn8l8hSdrQaK8sxCHSUbtngUaS/MKK5O/S4S/8FtuRjugAxElaJNjCcOBRrY554UnA8ikzDL8oxcsg/LZ6SeI6WWJ2vKtMZ4sK0jjX6Nae7L4Hbwfotid3GEV3l+lyPxAGVIvtfITKavk97QsBW6aYXlwq5UBqyEX6muOhVPwOokeGS9u/AUMukY3k3dU+aQSoIgSA8ao+XybWvApIz74WL4S3NNwcEOW2EZrSLPMILoInKgtq3Jr2e8YB6ZYWRfyhHDWIY872S7A73Z0S5vzCvLpS51jqUnN7xcuY3OfZspBhgmX2e5th7Inj+IB2JlG78vqdDrH+aXeYkHGgSaam6WPPrAhma9q4DD2C9gd/wV5hlL78XAqkEg/JXO0lkxaQe7gGLEcZa4EyMVL5b4DGkYz2wJ3vUhgndc6JDSs/StH1QoDi7ZQnufKCbQMR4P5bKA+3wa/+Wol6eapHmfmJAOj524t3FnDkcFEXgDYqvqns4amfqBRa47vJS9lQX2YkPS74yuqbmlqn7QTnT4ih5HwLNCUfsbGhlq/HDKZdjbEr0jAZmmAMXm/cPQbQLUfPq9SC4p9dXTlMJd8BjG+FOMR8nw/wNWoPtBRtCYqL17I3kG7omz1c=
   - secure: jk18E+W/lveyVeJgm9NoO9SsQ0WIR50ELhVVa31Y7p1BEaWB4rv2JmU61kBh+ekMtTpO00RptgScKLt/Io7Sfi9s4nY112a0+hpCl6IdDzQpogJn3Odz7/AcMIDIrBPg6/rbf59S2pAHrRDDI6AgjCpKVPOwsYNDWen2mfFpQaWSSPq1jnwlRcSUwpmtEcso+37Hr0egPBSkch8T38ZMtAMArAlC1w6kE4UqpwEM2Ihic6lCpAlb5cPaSOVGjFDRs9hHKo1ouKD97LP+qF33hmgKyWyFbGifypn5tnkARUgiQDjGgEHB5+e132tU0Cgq4ea0kqNhRMuaCtjwPJA81panNHw4Faefnp08I1ArHhFGmnrp08xFUOzIxdteBmr4BIdW1UxQeJHWrJJ7mL/Ba6yrpM95GieNAtrhwNjkrmMwIiDTBeeW4lszC3uUs8hS7lXkeA1XzIEOfOAEnzQcL6xQCOukDlOunvMvNVd57RrEcrkAtIXwX5DKJAAjOfaKvTU8bM0ZuJrQk2gJ0UK84ffiuTsxYkaeb4Y4LzXKPNd7ecfjKCR14ju9APiAZn9fKMRFyU8ChoJLHd0MHf+32Kd+3gcu/mBMbYbCSDMzdoSjDoGVqFJ8n1s8z5bO7O+mri6PT3PhKuKi3vNDLCfGZUBscKUlpkPiCxNN0lpsc0A=
@@ -16,11 +14,11 @@ branches:
   - "/^\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
 install: true
 script:
-- make mk-image ARCH=$ARCH VERSION=$TRAVIS_TAG
+- make mk-image VERSION=$TRAVIS_TAG
 - make mk-deployment VERSION=$TRAVIS_TAG
 deploy:
   - provider: script
-    script: make pushtohub USER=$DOCKER_USER PASS=$DOCKER_PASS ARCH=$ARCH VERSION=$TRAVIS_TAG
+    script: make pushtohub USER=$DOCKER_USER PASS=$DOCKER_PASS VERSION=$TRAVIS_TAG
     on:
       tags: true
       all_branches: true

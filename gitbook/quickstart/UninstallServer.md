@@ -1,6 +1,6 @@
 # Uninstall server
 
 ```
-cd agent/imageAPI
+cd sra-server
 make uninstall 
 ```

@@ -2,13 +2,13 @@
 
 ### Get release and unzip
 ```
-wget https://github.com/hellstein/ssh-rpc-agent/releases/download/0.1.8/ssh-rpc-agent-0.1.8.zip
-unzip ssh-rpc-agent-0.1.8.zip
+wget https://github.com/hellstein/ssh-rpc-agent-server/releases/download/0.1.12/ssh-rpc-agent-server-0.1.12.zip
+unzip ssh-rpc-agent-server-0.1.12.zip
 ```
 
 ### Start the service
 ```
-cd agent/imageAPI
+cd sra-server
 make install SSHDATA=[SSH CONFIG DIR]
 ```
 in which `SSHDATA` is a directory storing private keys.

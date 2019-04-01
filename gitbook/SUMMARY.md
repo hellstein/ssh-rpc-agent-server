@@ -1,31 +1,27 @@
 # SUMMARY
 
-* [Introduction ssh-rpc-agent-0.1.11](README.md)
+* [Introduction ssh-rpc-agent-server-0.1.12](README.md)
 
 ### Overview 
 * [Who are the users ?](overview/User.md)
 * [About project](overview/Project.md)
 
 ### Quick start
-* [Let's start](usage/quickstart/Video.md)
-* [Install server](usage/quickstart/InstallServer.md)
-* [Run job](usage/quickstart/RunJob.md)
-* [Uninstall server](usage/quickstart/UninstallServer.md)
+* [Let's start](quickstart/Video.md)
+* [Install server](quickstart/InstallServer.md)
+* [Test server](quickstart/TestServer.md)
+* [Install client](quickstart/InstallClient.md)
+* [Run jobs](quickstart/RunJob.md)
+* [Uninstall server](quickstart/UninstallServer.md)
 
 ### Configuration file 
-* [How to create tasks ?](usage/usermanual/CreateTask.md)
-* [How to create machine ?](usage/usermanual/CreateMachine.md)
+* [How to create tasks ?](confighelp/CreateTask.md)
+* [How to create machine ?](confighelp/CreateMachine.md)
 
 ### Developer guide
-* [How to start ?](usage/devguide/HowToStart.md)
-* [How to build locally ?](usage/devguide/LocalBuild.md)
-* [How to build with CI ?](usage/devguide/CIBuild.md)
-* [Server design](usage/devguide/Server.md)
-* [Client design](usage/devguide/Client.md)
-
-### QA usage
-* [Develop mode](usage/testflow/Development.md)
-* [Production mode](usage/testflow/Production.md)
+* [How to start ?](devguide/HowToStart.md)
+* [How to build locally ?](devguide/LocalBuild.md)
+* [How to build with CI ?](devguide/CIBuild.md)
 
 ### FAQ
 * [Trouble shooting](faq/Troubleshooting.md)
