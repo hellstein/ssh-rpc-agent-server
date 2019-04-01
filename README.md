@@ -17,7 +17,7 @@
 
 # Usage 
 
-* [Project video tutorial](https://hellstein.github.io/ssh-rpc-agent-server/usage/quickstart/Video.html)
+* [Project video tutorial](https://hellstein.github.io/ssh-rpc-agent-server/quickstart/Video.html)
 * [Project usage](https://hellstein.github.io/ssh-rpc-agent-server)
 
 # TODO

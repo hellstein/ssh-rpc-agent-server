@@ -1,4 +1,4 @@
-# Install Server
+# Install server
 
 ### Get release and unzip
 ```
